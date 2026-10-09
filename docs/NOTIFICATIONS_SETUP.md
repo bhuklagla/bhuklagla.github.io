@@ -9,7 +9,7 @@ Milan requested official Cloudflare skills/setup, real journey notifications, de
 - Worker: `https://bhuk-lagla-journeys.bhuklagla.workers.dev`. Version `917c4675-61a0-4b67-9e49-770aaa99afd9` is deployed. Production D1: `bhuk-lagla-journeys`, ID `aa24d297-1b88-4e3b-8b24-52b20500927f`. Staging D1: `bhuk-lagla-journeys-staging`, ID `17bcced6-0230-478c-92ae-a07c3cb811fc`. Migrations 0001–0003 were applied to staging before production; the queue and retention query plans use indexes.
 - Production owner token, rate-limit salt and ntfy destination are in ignored `backend/.dev.vars.production` and Worker secrets. Local QA data was not copied to D1. Never put these values into `PUBLIC_` variables or public screenshots.
 - Anonymous setup events were accepted and returned in the owner-authenticated report. Health returned 200, an unrelated origin 403, missing owner access 401 and an oversized request 413. Completed Zomato orders remain `unknown`.
-- Origin allowlist covers the current personal-account Pages host and the requested future `https://bhuklagla.github.io` host. Enabling a new origin does not create that website.
+- Origin allowlist covers `https://bhuklagla.github.io` and the historical personal-account Pages host. The approved root site requires its own checked deployment; enabling an origin alone does not publish a website.
 
 ## Official agent setup
 
@@ -31,11 +31,11 @@ Ten automated tests cover privacy, validation, origins, duplicate events, owner 
 
 ## Website and account handoff
 
-The website is currently published at `https://milanbeherazyx.github.io/bhuklagla.github.io/`. Milan explicitly rejected that as the final customer address and requested **`https://bhuklagla.github.io/`**, using a separate GitHub user account like The Oven Vibe. GitHub confirms The Oven Vibe's owner is a User named `theovenvibe`, not an organisation.
+The original release used `https://milanbeherazyx.github.io/bhuklagla.github.io/`. Milan rejected that as the final customer address and requested **`https://bhuklagla.github.io/`**. After GitHub rejected the Outlook email for a separate user signup, Milan approved a free organization under his existing account and explicitly approved its Customer Agreement. `bhuklagla` was created on the Free plan; `milanbeherazyx` is its active admin. The existing repository was transferred to `bhuklagla/bhuklagla.github.io` with history preserved.
 
-The `bhuklagla` signup was prepared, but GitHub rejects `bhuklagla@outlook.com` with “Email domain could not be verified”. Outlook MX records are valid. A different signup email or the owner's explicit choice of a free organisation is needed. Do not claim the short URL is live yet. The deployment workflows derive the GitHub origin/base from repository ownership so the root site can build correctly after an authorised transfer.
+The deployment workflows derive the GitHub origin/base from repository ownership. Public/local example configuration now selects the root host. Actual deployment and public root-address checks belong in `RELEASE.md`; the organization creation alone does not prove the site is live.
 
-The current repository's `PUBLIC_JOURNEY_API` is set to the verified Worker URL. The next checked Pages build activates its visitor opt-in measurement. Record the actual deployment/live consent test before calling website integration complete. Visitors who decline remain untracked. No fake party enquiry or completed order should be submitted for QA.
+The repository's `PUBLIC_JOURNEY_API` is set to the verified Worker URL. PR #2, commit `da0d695403412e1ed4c4c0cf649c9da1993d0612`, passed source checks and Pages deployment `37987370986` on the original host. Live declined browsing produced zero new events; opted-in menu/dish/contact navigation stored eight anonymous events and its contact-intent alert arrived in the laptop feed. This synthetic QA session is recorded outside Git. No form submission or Zomato order was created. Repeat relevant live checks at the root host after deployment.
 
 ## Android
 
