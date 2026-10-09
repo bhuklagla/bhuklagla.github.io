@@ -8,7 +8,7 @@ import { business } from '../lib/site';
   description="How Bhuk Lagla Kitchen handles contact enquiries, optional journey measurement and links to Zomato."
 >
   <article class="wrap prose section">
-    <p class="eyebrow">Updated 9 October 2026</p>
+    <p class="eyebrow">Updated 10 October 2026</p>
     <h1>Privacy</h1>
     <h2>Contact enquiries</h2>
     <p>
@@ -36,9 +36,10 @@ import { business } from '../lib/site';
     <p>
       These events may produce a notification for the kitchen containing a short anonymous journey.
       Notifications use ntfy. The notification topic has an unguessable address, but is not an
-      access-controlled private channel, so contact details are excluded. Our journey service
-      retains events for up to 30 days. Network addresses are used only to enforce rate limits;
-      rate-limit identifiers are hashed.
+      access-controlled private channel, so contact details are excluded. Our journey service runs
+      on Cloudflare and retains events for up to 30 days. Failed notifications may be retried for up
+      to 24 hours. Network addresses are used only to enforce rate limits; rate-limit identifiers
+      are hashed.
     </p>
     <p>
       A Zomato click does not tell us whether you completed an order. Browser-reported form success

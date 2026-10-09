@@ -1,5 +1,7 @@
 # Setup and launch
 
+10 October update: the kitchen-email Cloudflare account and Worker/D1 are deployed on the confirmed Free plan. Authoritative setup/resource/profile/secret instructions and delivery status are in `NOTIFICATIONS_SETUP.md`. Worker alerts reach Bhuk Lagla's separate free Render ntfy server; D1 retains failed deliveries for retry. The current Pages host remains online, but the owner requires `https://bhuklagla.github.io/`; account signup is blocked on the Outlook address. Do not treat a backend deploy or queued alert as successful phone delivery. The older account-pending instructions below are historical.
+
 ## Current state
 
 Published website: `https://milanbeherazyx.github.io/bhuklagla.github.io/`. GitHub Pages deploys the checked `dist` artifact from `main`; see `RELEASE.md` for successful live verification. Web3Forms' Website URL now points to the public contact page. Production journey measurement remains disabled until Bhuk Lagla's own Cloudflare backend account is ready. These launch facts supersede the older local setup notes below.

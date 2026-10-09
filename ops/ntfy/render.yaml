@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: bhuk-lagla-notifications
+    runtime: image
+    image:
+      url: docker.io/binwiederhier/ntfy:v2.29.0
+    plan: free
+    region: singapore
+    numInstances: 1
+    dockerCommand: ntfy serve
+    healthCheckPath: /v1/health
+    envVars:
+      - key: NTFY_LISTEN_HTTP
+        value: ':10000'
+      - key: NTFY_CACHE_FILE
+        value: /tmp/ntfy-cache.db
+      - key: NTFY_CACHE_DURATION
+        value: 24h
+      - key: NTFY_BEHIND_PROXY
+        value: 'true'

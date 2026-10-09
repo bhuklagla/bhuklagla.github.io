@@ -1,5 +1,7 @@
 # Bhuk Lagla Kitchen — product requirements
 
+10 October update: all infrastructure must stay on free plans. Cloudflare Workers/D1 are deployed in the separate kitchen-email account. Production alerts need verified ntfy delivery; store/retry failures and distinguish provider acceptance from phone receipt. Customer hosting must become `https://bhuklagla.github.io/`, matching The Oven Vibe's separate GitHub user/repository pattern. Signup is blocked by GitHub's Outlook-email validation until the owner supplies another email or selects an organisation. See `docs/NOTIFICATIONS_SETUP.md`; these decisions supersede the older account-pending and final-URL statements below.
+
 9 October 2026. Build authorised by Milan. Selected visual direction: Kitchen Studio.
 
 The website introduces a newly opened local kitchen to Sundargarh residents, particularly school and college customers looking for affordable pizza, sandwiches and snacks. Its primary journey is discover food, browse the menu, then order on Zomato through https://link.zomato.com/xqzv/rshare?id=15027983430563a88. Zomato controls transactions, current availability, prices and offer eligibility.

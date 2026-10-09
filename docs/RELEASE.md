@@ -1,5 +1,7 @@
 # Live release — 9 October 2026
 
+10 October backend release: Bhuk Lagla's own free Cloudflare account now serves `https://bhuk-lagla-journeys.bhuklagla.workers.dev`. Production/staging D1 migrations succeeded and live privacy/auth/body-limit checks passed. The initial ntfy.sh 522 problem is resolved through a separate free Render ntfy server; a live Worker alert was received. Phone delivery remains unverified and failures are queued for retry. The source update also prepares owner-based Pages origin/base selection for the required `https://bhuklagla.github.io/` move, which remains blocked on GitHub signup email validation. Current evidence and secrets boundaries are in `NOTIFICATIONS_SETUP.md`. The checked Pages integration release is pending below.
+
 Website: [Bhuk Lagla Kitchen](https://milanbeherazyx.github.io/bhuklagla.github.io/).
 
 Release commit: `40a278b825a1b104a94b2badf5bd8dd337a1649e` on `main`, merged through [PR #1](https://github.com/milanbeherazyx/bhuklagla.github.io/pull/1). Review commit: `1a55e15887f0f7323c1dab3362d1aba18e33dbd4`.

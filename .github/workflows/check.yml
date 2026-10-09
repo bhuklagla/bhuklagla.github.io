@@ -21,8 +21,8 @@ jobs:
       - run: npm test
       - run: npm run build
         env:
-          PUBLIC_SITE_URL: https://milanbeherazyx.github.io
-          PUBLIC_BASE_PATH: /bhuklagla.github.io/
+          PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io
+          PUBLIC_BASE_PATH: ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}/', github.event.repository.name) }}
           PUBLIC_WEB3FORMS_KEY: '30e2a51f-6b1d-4a32-a06b-83723a66b242'
           PUBLIC_JOURNEY_API: ${{ vars.PUBLIC_JOURNEY_API }}
       - uses: actions/upload-artifact@v7.0.2

@@ -1,5 +1,7 @@
 # Website skills
 
+On 10 October Milan explicitly requested Cloudflare's official agent setup. All 16 packages from `cloudflare/skills` at commit `ff91b2df2ed968eca50b5982c277d13351ed93e8` are installed globally under `C:\Users\milan\.codex\skills`. Use `cloudflare`, `wrangler` and `workers-best-practices` for this Worker/D1 service and resolve references from those installed folders. Their official source is [Cloudflare skills](https://github.com/cloudflare/skills); setup/auth provenance is in `../docs/NOTIFICATIONS_SETUP.md`. This does not authorise unrelated global installations or changes to Oven Vibe.
+
 These skills are local to this repository. Codex and Claude can read the same files through `AGENTS.md` and `CLAUDE.md`; no global skill installation is required.
 
 ## Bhuk Lagla workflows

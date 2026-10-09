@@ -1,5 +1,5 @@
 const ROOT = new URL('./', self.location.href);
-const CACHE = 'bhuk-lagla-v2';
+const CACHE = 'bhuk-lagla-v3';
 const core = ['', 'menu/', 'offline/', 'brand/logo.webp', 'icons/icon-192.png'].map(
   (path) => new URL(path, ROOT).href,
 );
