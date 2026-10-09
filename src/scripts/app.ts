@@ -42,6 +42,19 @@ document.querySelectorAll<HTMLAnchorElement>('[data-zomato]').forEach((link) =>
     );
   }),
 );
+document.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((link) => {
+  const target = new URL(link.href, location.href);
+  if (target.protocol === 'mailto:') {
+    link.addEventListener('click', () => track('contact_click', 'email'));
+  } else if (
+    target.origin === location.origin &&
+    target.pathname === `${import.meta.env.BASE_URL}contact/`
+  ) {
+    link.addEventListener('click', () =>
+      track('contact_click', target.searchParams.get('type') === 'general' ? 'general' : 'party'),
+    );
+  }
+});
 document.querySelector('[data-share]')?.addEventListener('click', async () => {
   try {
     if (navigator.share) await navigator.share({ title: document.title, url: location.href });
@@ -98,9 +111,15 @@ if (browser) {
         : initial;
     apply();
   };
-  input.addEventListener('input', () => apply(true));
+  let searchTimer: ReturnType<typeof setTimeout>;
+  input.addEventListener('input', () => {
+    apply(true);
+    clearTimeout(searchTimer);
+    if (input.value.trim()) searchTimer = setTimeout(() => track('menu_search'), 500);
+  });
   clear.addEventListener('click', () => {
     input.value = '';
+    clearTimeout(searchTimer);
     apply(true);
     input.focus();
   });
@@ -130,9 +149,20 @@ if (form) {
     party.disabled = type.value !== 'party';
     occasion.required = type.value === 'party';
   };
-  if (new URLSearchParams(location.search).get('type') === 'party') type.value = 'party';
+  const requestedType = new URLSearchParams(location.search).get('type');
+  if (requestedType === 'party' || requestedType === 'general') type.value = requestedType;
   sync();
-  type.addEventListener('change', sync);
+  let started = false;
+  form.addEventListener('focusin', () => {
+    if (!started) {
+      track('enquiry_started', type.value);
+      started = true;
+    }
+  });
+  type.addEventListener('change', () => {
+    sync();
+    track('enquiry_type_selected', type.value);
+  });
   const date = party.querySelector<HTMLInputElement>('[type=date]')!;
   const today = new Date();
   date.min = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
@@ -146,11 +176,13 @@ if (form) {
       return;
     }
     button.disabled = true;
+    const enquiryType = type.value;
+    track('enquiry_submit', enquiryType);
     button.textContent = 'Sending…';
     message.textContent = 'Sending your enquiry…';
     const payload = Object.fromEntries(new FormData(form));
     payload.subject =
-      type.value === 'party'
+      enquiryType === 'party'
         ? 'Bhuk Lagla Kitchen — party enquiry'
         : 'Bhuk Lagla Kitchen — general enquiry';
     try {
@@ -163,10 +195,12 @@ if (form) {
       if (!response.ok || !result.success) throw new Error('provider');
       message.textContent =
         'Enquiry sent. We’ll reply by email. This does not confirm an order or party booking.';
-      track('enquiry_reported', type.value === 'party' ? 'party' : 'general');
+      track('enquiry_reported', enquiryType);
       form.reset();
+      started = false;
       sync();
     } catch {
+      track('enquiry_failed', enquiryType);
       message.textContent =
         'We couldn’t confirm that your enquiry was sent. Try again, or email bhuklagla@outlook.com.';
     } finally {

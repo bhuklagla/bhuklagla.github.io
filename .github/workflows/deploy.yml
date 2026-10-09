@@ -1,13 +1,17 @@
-name: Website checks
+name: Deploy GitHub Pages
 on:
   push:
-    branches: [main, 'website/**']
-  pull_request:
+    branches: [main]
   workflow_dispatch:
 permissions:
   contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
 jobs:
-  verify:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7.0.1
@@ -15,6 +19,7 @@ jobs:
         with:
           node-version: 24
           cache: npm
+      - uses: actions/configure-pages@v6.0.0
       - run: npm ci
       - run: npm run format:check
       - run: npm run check
@@ -25,7 +30,16 @@ jobs:
           PUBLIC_BASE_PATH: /bhuklagla.github.io/
           PUBLIC_WEB3FORMS_KEY: '30e2a51f-6b1d-4a32-a06b-83723a66b242'
           PUBLIC_JOURNEY_API: ${{ vars.PUBLIC_JOURNEY_API }}
-      - uses: actions/upload-artifact@v7.0.2
+      - uses: actions/upload-pages-artifact@v5.0.0
         with:
-          name: bhuk-lagla-website
           path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publish website
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1

@@ -45,8 +45,8 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
       <label>
         What’s this about?
         <select name="enquiry_type" required data-enquiry-type>
+          <option value="party">Party / bulk order enquiry</option>
           <option value="general">A general question</option>
-          <option value="party">Party / group food enquiry</option>
         </select>
       </label>
       <div class="form-row">
@@ -60,8 +60,8 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
         </label>
       </div>
       <label>
-        Phone (optional)
-        <input type="tel" name="phone" autocomplete="tel" maxlength="25" />
+        Phone
+        <input type="tel" name="phone" autocomplete="tel" minlength="7" maxlength="25" required />
       </label>
       <fieldset data-party-fields>
         <legend>For a party or gathering</legend>
@@ -141,7 +141,7 @@ const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
     <details>
       <summary>Can I enquire about a birthday or anniversary?</summary>
       <p>
-        Yes. Choose Party / group food enquiry above. We’ll confirm options and availability by
+        Yes. Choose Party / bulk order enquiry above. We’ll confirm options and availability by
         email before any arrangements are made.
       </p>
     </details>

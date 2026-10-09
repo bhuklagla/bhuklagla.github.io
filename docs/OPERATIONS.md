@@ -40,6 +40,8 @@ Zomato clicks show a handoff, not a completed order. The verified partner Outlet
 
 Form success in the journey report is browser-reported; the Web3Forms inbox is the source to review actual enquiries. Visitors who decline measurement are intentionally absent from journeys and ntfy milestones. Notifications can fail without preventing browsing or an enquiry from reaching Web3Forms.
 
+Contact defaults to Party / bulk order enquiry, with A general question below it and a required phone field. Contact links, form activity, searches (no keywords), category/dish views and Zomato handoffs have anonymous event coverage. ntfy notifications for contact intent explicitly say that the click has not submitted an enquiry; successful enquiries and Zomato handoffs keep their separate meanings.
+
 Maintain public catalogue records in `src/data/menu.json`. Current availability remains “Check on Zomato”; hide a dish with `visible: false` only through an authorised content change and update expected catalogue validation deliberately. Never infer stock from old Oven Vibe tracking.
 
 Source changes run GitHub checks. Public deployment is a separate action. Keep rollback as a reviewed Git revert and host rebuild, with service-worker version/update behaviour verified.

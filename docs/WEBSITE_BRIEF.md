@@ -2,7 +2,13 @@
 
 Kitchen Studio is selected and the full build is explicitly authorised. The headline is Big cravings. Small budget. Use the complete approved mascot-and-name logo in the header and the approved face favicon. Milan’s latest hero revision places the large mascot directly below “Air-fryer pizzas, grilled sandwiches and snacks. / Made for Sundargarh cravings.” and removes the Maggi/sandwich/fries preview rows. Paneer Chataka Pizza remains the hero food photo; all 23 natural-serving-angle photos remain in the site’s menu. No prices or private recipes. Publish Sundargarh, bhuklagla@outlook.com and the supplied Zomato smart link only.
 
-Web3Forms general/party enquiries, ntfy anonymous journey notifications and the owner report are now requested. Free Web3Forms signup was approved and completed. The new random ntfy channel received setup and local enquiry-journey tests. Completed Zomato orders are unknown. Current requirements are in ../PRD.md; implementation and setup are in ARCHITECTURE.md, OPERATIONS.md and QA_REPORT.md. Public hosting is awaiting the owner choice. The discussion below is historical and does not override these later decisions.
+Web3Forms general/party enquiries, ntfy anonymous journey notifications and the owner report are now requested. Free Web3Forms signup was approved and completed. The new random ntfy channel received setup and local enquiry-journey tests. Completed Zomato orders are unknown. Current requirements are in ../PRD.md; implementation and setup are in ARCHITECTURE.md, OPERATIONS.md and QA_REPORT.md. On 9 October Milan requested full SEO, festival guides and deployment, and confirmed no domain is owned. Publish through GitHub Pages at `https://milanbeherazyx.github.io/bhuklagla.github.io/`. Cloudflare is only needed for the separate private journey service; a Bhuk Lagla account using its official email is pending. Do not reuse The Oven Vibe's authenticated Cloudflare account. The discussion below is historical and does not override these later decisions.
+
+---
+
+Latest usability refinements: a rounded, labelled menu search field with an orange icon and visible focus/clear controls. Our Kitchen adds “Little birthdays. Big celebrations.” with kids’ birthday, office gathering and anniversary copy. Retain the underlined contact link in that paragraph and add a Contact us button beside Explore the menu; both open `/contact/?type=party`.
+
+Contact has Phone required and Party / bulk order enquiry first and selected by default, followed by A general question. Food Talk dates and Read article links have a spaced metadata row. Anonymous journey coverage includes searches without keywords, category/dish views, contact links, enquiry form activity and Zomato handoffs; ntfy announces contact intent, successful enquiries and handoffs without contact details.
 
 ---
 

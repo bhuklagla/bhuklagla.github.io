@@ -23,8 +23,24 @@ Evidence files are outside the repository in the workspace demo output folder, s
 
 Milan requested the mascot directly below the food introduction and removal of the three small Maggi/sandwich/fries hero previews. Verified the mascot follows the introduction in the DOM, the hero contains one food photograph and no preview rows, and its visible position is below the introduction at 390px and 320px. Both phone widths and desktop have no horizontal overflow; loaded images resolve. Astro/catalogue checks and the 41-page static build/link validation pass. Screenshots: `hero-refined-desktop.jpg` and `hero-refined-mobile.jpg` in the workspace demo output folder. Device emulation was restored after verification.
 
+## Menu, celebrations and tracking refinements
+
+The menu search has a visible label, orange icon, rounded container, one seamless input and a clear control. Searching “paneer” returns two dishes; clearing restores all 23 and focuses the input. Checked at desktop, 390px and 320px, including the clear control and a 16px input font.
+
+Our Kitchen now has the celebration invitation beneath the cooking-method paragraph, retains its underlined contact link and adds Contact us beside Explore the menu. The contact button opens `/contact/?type=party`. The form lists party enquiries first and general enquiries second; party is selected by default and an empty phone field is invalid because Phone is required. The mobile mascot now fits its column rather than forcing the Our Kitchen page wider than the viewport.
+
+Food Talk separates date and Read article using a spaced metadata row. At 320px all three cards show positive date/link gaps. Menu, Our Kitchen, Contact and Food Talk all fit the 320px viewport with no horizontal overflow.
+
+Expanded anonymous event coverage includes menu search usage without keywords, category page views, contact/email clicks, form starts/type changes/submit attempts/failures and successful enquiries. A real local-preview Contact us click produced an ntfy contact-intent notification with the anonymous journey and an explicit “No enquiry has been submitted” message. Contact details never enter this pipeline. Six backend tests pass, including silent browsing/form events, notification contents and rejection of search text/private fields. Static build/link validation and Astro/catalogue checks pass.
+
+Screenshots in the private workspace output folder: `menu-search-refined-desktop.jpg`, `menu-search-refined-mobile.jpg`, `our-kitchen-parties.jpg`, `food-talk-spacing.jpg`, `ntfy-contact-intent.jpg`. Do not upload the ntfy screenshot to public artifacts. Device overrides are reset after QA.
+
 ## Launch limitations
 
 No public host/domain or production journey database is configured. Preview noindex is deliberate. Mobile Zomato app/outlet handoff still needs a real device check; the supplied smart link redirects desktop Chrome to Zomato’s mobile app-download page. No order was placed. The partner Smart Link drawer for Bhuk Lagla Kitchen (22951767) confirms the exact supplied link and offers aggregate menu-visit/order reporting. Automated per-website-session paid-order attribution remains unavailable.
 
 Lighthouse/field Core Web Vitals and Google indexing/ranking have not been measured on a production origin. PRD performance goals remain targets. Search ranking within a few days is not guaranteed. Full Google local-business rich results require further owner-approved publication facts; only city/email were authorised here.
+
+## SEO launch verification — 9 October 2026
+
+Astro check: zero errors/warnings/hints. Six backend tests pass. Build generates 45 pages, with 42 indexable pages verified against the canonical sitemap; 23 image entries and six RSS articles verified. Unique titles, one H1 per page, BreadcrumbList JSON-LD, local asset/link resolution, noindex utility exclusions and public-content boundaries pass. Festival hub and Navratri article fit 320px and 390px with no horizontal overflow. All observed photos load. Production canonical uses the GitHub Pages project path. Backend route validation includes new festival/blog paths. Cloudflare production notifications and Search Console verification remain pending owner setup.

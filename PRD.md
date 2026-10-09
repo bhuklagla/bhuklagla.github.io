@@ -17,6 +17,10 @@ The website introduces a newly opened local kitchen to Sundargarh residents, par
 
 Home, searchable/filterable menu, five category pages, 23 individual dish pages, About, Sundargarh, blog index and useful original articles, Contact/FAQ, privacy, offline fallback and 404. All key content is statically rendered and available without JavaScript. Dish links are shareable; filters/search enhance ordinary browsing.
 
+The menu search uses a rounded field with a brand-orange icon, a visible label and accessible focus/clear controls. Our Kitchen includes a celebration invitation after the cooking-method paragraph, mentioning kids’ birthdays, office gatherings and anniversaries. Its underlined contact link and the Contact us button beside Explore the menu both open the party enquiry form with the party option selected. Ask visitors to share their plans and contact details so the kitchen can reply.
+
+The contact form lists Party / bulk order enquiry above A general question, with party selected by default. Phone is required. Anonymous measurement covers page/menu/category/dish views, search usage without keywords, category filters, contact/email clicks, enquiry starts/type changes/submission attempts/failures/success and Zomato handoffs. ntfy announces contact intent, successful browser-reported enquiries and Zomato handoffs with the recent anonymous journey; browsing activity stays in the owner report. Contact details are sent only to Web3Forms/email, never in journey events or ntfy.
+
 Menu availability is labelled **Check on Zomato**, not a fabricated live feed. Provide a typed manual visibility/availability field for future owner maintenance without reviving stock tracking. Zomato offers copy must be conditional. No cart, checkout, payments, customer account system, WhatsApp orders, fake reviews or artificial scarcity.
 
 Milan additionally requested Web3Forms contact enquiries, party enquiries (birthday, anniversary and other gatherings), ntfy notifications and customer-journey measurement. Free Web3Forms submissions go directly from the browser to its API; the public form key is intended for client use. A separate backend validates anonymous journey events and protects the ntfy destination and owner-report token. Measurement requires visitor opt-in. Enquiry success in the report is browser-reported Web3Forms acceptance, not independently verified by the journey backend. Completed Zomato orders remain unknown without a verified platform data source. Never label an outbound click as a completed order. The free ntfy topic is random and unlisted, not access-controlled private; never include customer contact details in its messages.
@@ -52,3 +56,7 @@ Target mobile Lighthouse performance ≥90 and accessibility/SEO ≥95 on repres
 3. Add blog, SEO, progressive motion and PWA.
 4. Build, validate and inspect mobile/desktop preview.
 5. Preserve the result in GitHub source/CI and resolve production URL/hosting before public launch.
+
+## SEO and launch update — 9 October 2026
+
+Deploy the approved website on GitHub Pages using its actual owner/project URL. Include a festival hub and three original, sourced 2026 guides for Navratri/Garba, Durga Puja/Dussehra and Diwali planning. Generate canonical sitemap, image sitemap, RSS and robots configuration; validate metadata, schema and exclusions on each production build. No guaranteed rankings, invented events, fasting-menu claim, fake offers or reviews. Preserve all no-price and recipe boundaries. Private notification hosting remains separate, awaiting the official-email Cloudflare account. See docs/SEO_LAUNCH.md.

@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import FoodImage from '../../components/FoodImage.astro';
 import { url } from '../../lib/site';
+import { displayDate } from '../../lib/seo';
+import { findItem } from '../../lib/menu';
 const articles = (await getCollection('blog')).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
@@ -21,19 +23,24 @@ const articles = (await getCollection('blog')).sort(
       Everyday questions.
     </h1>
     <p>A little menu inspiration and help with your next food break.</p>
+    <a class="text-link" href={url('festivals/')}>
+      Planning Navratri, Durga Puja or Diwali? Explore our festival guides →
+    </a>
   </section>
   <section class="wrap section blog-grid">
     {articles.map((article) => (
       <article class="blog-card">
         <a href={url(`blog/${article.id}/`)}>
-          <FoodImage id={article.data.image} alt={article.data.title} />
+          <FoodImage id={article.data.image} alt={findItem(article.data.image).name} />
           <h2>{article.data.title}</h2>
         </a>
         <p>{article.data.description}</p>
-        <time datetime={article.data.date.toISOString()}>9 October 2026</time>
-        <a class="text-link" href={url(`blog/${article.id}/`)}>
-          Read article →
-        </a>
+        <div class="blog-card-meta">
+          <time datetime={article.data.date.toISOString()}>{displayDate(article.data.date)}</time>
+          <a class="text-link" href={url(`blog/${article.id}/`)}>
+            Read article →
+          </a>
+        </div>
       </article>
     ))}
   </section>

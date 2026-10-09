@@ -8,19 +8,23 @@ const items = category === 'all' ? menu : menu.filter((item) => item.category ==
 
 <div data-menu-browser data-initial-category={category}>
   <div class="menu-tools">
-    <label class="search-box">
-      <Icon name="search" />
-      <span class="sr-only">Search the menu</span>
-      <input
-        type="search"
-        placeholder="Pizza, paneer, Maggi…"
-        data-menu-search
-        autocomplete="off"
-      />
+    <div class="search-box" role="search" aria-label="Menu search">
+      <span class="search-symbol">
+        <Icon name="search" size={22} />
+      </span>
+      <label class="search-field">
+        <span class="search-label">Search the menu</span>
+        <input
+          type="search"
+          placeholder="Try pizza or Maggi…"
+          data-menu-search
+          autocomplete="off"
+        />
+      </label>
       <button type="button" data-clear-search class="icon-button" aria-label="Clear search" hidden>
         <Icon name="close" />
       </button>
-    </label>
+    </div>
     {category === 'all' && (
       <div class="filter-row" aria-label="Filter menu by category">
         <button data-filter="all" aria-pressed="true">

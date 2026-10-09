@@ -17,4 +17,6 @@ npm run preview -- --port 4321
 
 For the optional journey backend, copy `backend/.dev.vars.example` to `backend/.dev.vars`, supply your own ntfy destination, long random owner token and rate-limit salt, then run `npm run backend:dev`. Those values stay outside Git. The local service listens only on `127.0.0.1:8787` and stores anonymous events in ignored `backend/data/`.
 
-No publication URL is configured by default. Previews are noindex and do not generate a production sitemap. GitHub Actions validates and uploads a static build artifact; it does not deploy a public website.
+Production hosting is GitHub Pages at `https://milanbeherazyx.github.io/bhuklagla.github.io/`. The `main` deployment workflow checks and publishes the static artifact. Source-branch checks use the same origin and project path. Copying `.env.example` selects this production target locally; remove `PUBLIC_SITE_URL` for a noindex preview.
+
+The [SEO launch report](docs/SEO_LAUNCH.md) documents 42 indexable pages, festival sources, canonical metadata, structured data, sitemap/image sitemap/RSS and Search Console follow-up. GitHub Pages cannot run the private journey backend; its Bhuk Lagla Cloudflare account is pending. Contact enquiries still use the configured browser-direct Web3Forms integration.

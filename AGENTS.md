@@ -1,5 +1,7 @@
 # Bhuk Lagla website
 
+Launch update, 9 October 2026: Milan requested advanced SEO and deployment, has no domain, and selected GitHub hosting. The approved target is `https://milanbeherazyx.github.io/bhuklagla.github.io/`; always preserve the project base path. A separate Bhuk Lagla Cloudflare account for the notification backend remains pending; do not use the available Oven Vibe login. This supersedes the earlier hosting-pending statement below. Keep Sundargarh + email publication until additional business facts are explicitly approved. See `docs/SEO_LAUNCH.md` and the latest release evidence.
+
 Read `docs/WEBSITE_BRIEF.md` and `skills/README.md` before working here.
 
 On 9 October 2026 Milan selected Kitchen Studio and explicitly instructed "Build it now". Full implementation is authorised. Use the complete approved mascot-and-name logo in the top-left, the headline "Big cravings. Small budget.", a large mascot directly below the hero introduction, and Paneer Chataka Pizza as the hero food photo. Milan subsequently requested removal of the hero’s Maggi/sandwich/fries preview rows; retain those menu categories. Use the natural-serving-angle photo collection. Document requirements in PRD.md and build/test the site. Public production hosting/domain still needs configuration; building does not resolve publication facts or authorise copying another outlet's business profile. Historical demos remain in `D:\Bhuk Lagla\outputs\website-demo`.

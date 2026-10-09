@@ -6,6 +6,7 @@ import DishCard from '../../components/DishCard.astro';
 import Icon from '../../components/Icon.astro';
 import { menu, categories, relatedItems } from '../../lib/menu';
 import { url } from '../../lib/site';
+import { absolute } from '../../lib/seo';
 export function getStaticPaths() {
   return menu.map((item) => ({ params: { id: item.id }, props: { item } }));
 }
@@ -18,6 +19,8 @@ const schema = {
   name: item.name,
   description: item.description,
   suitableForDiet: 'https://schema.org/VegetarianDiet',
+  image: absolute(`images/menu/${item.id}-960.webp`),
+  url: absolute(`menu/${item.id}/`),
 };
 ---
 

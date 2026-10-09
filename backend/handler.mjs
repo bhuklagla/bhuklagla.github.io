@@ -5,15 +5,25 @@ const blogs = new Set([
   'pizza-sandwich-or-snack',
   'air-fryer-pizza-and-fries',
   'party-food-enquiries-sundargarh',
+  'navratri-garba-sundargarh-2026',
+  'durga-puja-dussehra-sundargarh-2026',
+  'diwali-party-food-sundargarh-2026',
 ]);
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const TYPES = new Set([
   'page_view',
   'menu_view',
+  'menu_search',
+  'category_view',
   'dish_view',
   'category_filter',
   'zomato_handoff',
   'enquiry_reported',
+  'contact_click',
+  'enquiry_started',
+  'enquiry_type_selected',
+  'enquiry_submit',
+  'enquiry_failed',
 ]);
 const DETAIL = /^(?:[a-z0-9]+(?:-[a-z0-9]+)*)?$/;
 export function validateEvent(raw) {
@@ -25,7 +35,7 @@ export function validateEvent(raw) {
   if (
     typeof raw.route !== 'string' ||
     raw.route.length > 120 ||
-    !/^\/(?:|(?:menu(?:\/category)?|blog)(?:\/[a-z0-9-]+)?\/|(?:about|contact|privacy|sundargarh|offline)\/)$/.test(
+    !/^\/(?:|(?:menu(?:\/category)?|blog)(?:\/[a-z0-9-]+)?\/|(?:about|contact|privacy|sundargarh|offline|festivals)\/)$/.test(
       raw.route,
     )
   )
@@ -44,12 +54,16 @@ export function validateEvent(raw) {
     raw.detail &&
     !dishIds.has(raw.detail) &&
     !categories.has(raw.detail) &&
-    !['party', 'general'].includes(raw.detail)
+    !['party', 'general', 'email'].includes(raw.detail)
   )
     throw new Error('Unknown detail');
   if (!['mobile', 'desktop'].includes(raw.device)) throw new Error('Invalid device');
-  if (raw.type === 'enquiry_reported' && !['party', 'general'].includes(raw.detail))
+  if (raw.type.startsWith('enquiry_') && !['party', 'general'].includes(raw.detail))
     throw new Error('Invalid enquiry');
+  if (raw.type === 'menu_search' && raw.detail !== '')
+    throw new Error('Search text is not collected');
+  if (raw.type === 'contact_click' && !['party', 'general', 'email'].includes(raw.detail))
+    throw new Error('Invalid contact event');
   return Object.fromEntries(allowed.map((key) => [key, raw[key]]));
 }
 export async function sha256(value) {
@@ -150,7 +164,7 @@ export async function handleRequest(
       .run();
     if (
       inserted.meta.changes &&
-      ['zomato_handoff', 'enquiry_reported'].includes(event.type) &&
+      ['zomato_handoff', 'contact_click', 'enquiry_reported'].includes(event.type) &&
       env.NTFY_TOPIC
     ) {
       const recent = await env.DB.prepare(
@@ -161,13 +175,19 @@ export async function handleRequest(
       const title =
         event.type === 'zomato_handoff'
           ? 'Bhuk Lagla - Zomato opened'
-          : 'Bhuk Lagla - enquiry reported';
+          : event.type === 'contact_click'
+            ? 'Bhuk Lagla - contact link clicked'
+            : 'Bhuk Lagla - enquiry reported';
+      const explanation =
+        event.type === 'zomato_handoff'
+          ? 'Outbound click only. Completed order unknown.'
+          : event.type === 'contact_click'
+            ? 'Contact intent only. No enquiry has been submitted by this click.'
+            : 'Web3Forms success reported by browser. Check the email inbox.';
       const body = `Anonymous visit ${event.session.slice(0, 8)} (${event.device})\n${recent.results
         .reverse()
         .map((row) => `${row.type}: ${row.route}${row.detail ? ` (${row.detail})` : ''}`)
-        .join(
-          '\n',
-        )}\n${event.type === 'zomato_handoff' ? 'Outbound click only. Completed order unknown.' : 'Web3Forms success reported by browser. Check the email inbox.'}`;
+        .join('\n')}\n${explanation}`;
       ctx.waitUntil(
         publish(`${(env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '')}/${env.NTFY_TOPIC}`, {
           method: 'POST',

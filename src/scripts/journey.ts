@@ -33,7 +33,12 @@ function start() {
   track('page_view');
   const dish = document.querySelector<HTMLElement>('[data-detail-id]');
   if (dish) track('dish_view', dish.dataset.detailId);
-  if (document.querySelector('[data-menu-browser]')) track('menu_view');
+  const menuBrowser = document.querySelector<HTMLElement>('[data-menu-browser]');
+  if (menuBrowser) {
+    track('menu_view');
+    const category = menuBrowser.dataset.initialCategory;
+    if (category && category !== 'all') track('category_view', category);
+  }
 }
 export function setupJourney() {
   if (!endpoint) return;
@@ -44,7 +49,7 @@ export function setupJourney() {
   const panel = document.createElement('aside');
   panel.className = 'consent-panel';
   panel.setAttribute('aria-label', 'Optional website measurement');
-  panel.innerHTML = `<h2>Help us improve?</h2><p>Allow anonymous menu browsing and Zomato click counts? No contact details or typed searches are recorded.</p><div class="consent-actions"><button class="button secondary" data-decline>No thanks</button><button class="button" data-allow>Allow</button></div><a class="text-link" href="${import.meta.env.BASE_URL}privacy/">Privacy details</a>`;
+  panel.innerHTML = `<h2>Help us improve?</h2><p>Allow anonymous browsing, contact and Zomato click counts? No contact details or typed searches are recorded.</p><div class="consent-actions"><button class="button secondary" data-decline>No thanks</button><button class="button" data-allow>Allow</button></div><a class="text-link" href="${import.meta.env.BASE_URL}privacy/">Privacy details</a>`;
   const choose = (allow: boolean) => {
     try {
       localStorage.setItem(preferenceKey, allow ? 'allow' : 'decline');
