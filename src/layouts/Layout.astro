@@ -1,0 +1,255 @@
+---
+import '../styles/global.css';
+import '@fontsource-variable/outfit';
+import '@fontsource-variable/work-sans';
+import { url, canonical, publicationUrl, business } from '../lib/site';
+import { categories } from '../lib/menu';
+import Icon from '../components/Icon.astro';
+import OrderButton from '../components/OrderButton.astro';
+import { pageGraph } from '../lib/seo';
+interface Props {
+  title: string;
+  description: string;
+  active?: string;
+  image?: string;
+  schema?: Record<string, unknown>;
+  noindex?: boolean;
+  articleDate?: string;
+}
+const {
+  title,
+  description,
+  active = '',
+  image = '/images/menu/paneer-chataka-pizza-960.webp',
+  schema,
+  noindex = false,
+  articleDate,
+} = Astro.props;
+const canonicalUrl = canonical(Astro.url.pathname);
+const imageUrl = publicationUrl ? new URL(url(image), publicationUrl).href : url(image);
+const legacyOrganisation = {
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: business.name,
+  email: business.email,
+  servesCuisine: ['Vegetarian', 'Pizza', 'Sandwiches', 'Snacks'],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: business.city,
+    addressRegion: business.region,
+    addressCountry: 'IN',
+  },
+  ...(canonicalUrl
+    ? {
+        url: canonical(url('')),
+        hasMenu: canonical(url('menu/')),
+        logo: new URL(url('brand/logo.webp'), publicationUrl).href,
+      }
+    : {}),
+};
+const organisation = pageGraph(Astro.url.pathname, title, description, image) || legacyOrganisation;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta
+      name="robots"
+      content={
+        noindex || !publicationUrl ? 'noindex, follow' : 'index, follow, max-image-preview:large'
+      }
+    />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <meta property="og:type" content={articleDate ? 'article' : 'website'} />
+    <meta property="og:locale" content="en_IN" />
+    {articleDate && <meta property="article:published_time" content={articleDate} />}
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:alt" content={title.split(' | ')[0]} />
+    <meta property="og:image:width" content="960" />
+    <meta property="og:image:height" content="640" />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    {publicationUrl && (
+      <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Bhuk Lagla Kitchen Food Talk"
+        href={url('feed.xml')}
+      />
+    )}
+    <link rel="icon" href={url('favicon.ico')} sizes="any" />
+    <link rel="icon" href={url('icons/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={url('icons/icon-180.png')} />
+    <link rel="manifest" href={url('manifest.webmanifest')} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(organisation).replace(/</g, '\\u003c')}
+    />
+    {schema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+      />
+    )}
+  </head>
+  <body>
+    <a href="#main" class="skip-link">
+      Skip to content
+    </a>
+    <header class="site-header wrap">
+      <a href={url('')} class="brand" aria-label="Bhuk Lagla Kitchen home">
+        <img
+          src={url('brand/logo.webp')}
+          width="420"
+          height="315"
+          alt="Bhuk Lagla Kitchen — mascot and logo"
+          loading="eager"
+        />
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href={url('')} aria-current={active === 'home' ? 'page' : undefined}>
+          Home
+        </a>
+        <a href={url('menu/')} aria-current={active === 'menu' ? 'page' : undefined}>
+          Menu
+        </a>
+        <a href={url('about/')} aria-current={active === 'about' ? 'page' : undefined}>
+          Our kitchen
+        </a>
+        <a href={url('blog/')} aria-current={active === 'blog' ? 'page' : undefined}>
+          Food talk
+        </a>
+      </nav>
+      <span class="location">
+        <Icon name="pin" size={17} />
+        Sundargarh
+      </span>
+      <OrderButton class="header-order" />
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <img
+            src={url('brand/logo.webp')}
+            width="420"
+            height="315"
+            alt="Bhuk Lagla Kitchen"
+            class="footer-logo"
+            loading="lazy"
+          />
+          <p>
+            Big cravings. Small budget.
+            <br />
+            Your local hunger fix in Sundargarh.
+          </p>
+        </div>
+        <div>
+          <h2>Find your craving</h2>
+          {categories.map((cat) => (
+            <a href={url(`menu/category/${cat.id}/`)}>{cat.name}</a>
+          ))}
+        </div>
+        <div>
+          <h2>Around the kitchen</h2>
+          <a href={url('about/')}>Our kitchen</a>
+          <a href={url('sundargarh/')}>Made for Sundargarh</a>
+          <a href={url('blog/')}>Food talk</a>
+          <a href={url('festivals/')}>Festival season</a>
+          <a href={url('contact/')}>Contact & FAQs</a>
+          <a href={url('privacy/')}>Privacy</a>
+        </div>
+        <div>
+          <h2>Browse here. Order there.</h2>
+          <p>Check current availability and eligible offers on Zomato.</p>
+          <OrderButton />
+          <a href={`mailto:${business.email}`} class="email-link">
+            {business.email}
+          </a>
+          <button class="install-button text-link" data-install hidden>
+            <Icon name="download" />
+            Install website
+          </button>
+        </div>
+      </div>
+      <div class="wrap footer-bottom">
+        <span>© {new Date().getFullYear()} Bhuk Lagla Kitchen · Sundargarh, Odisha</span>
+        <span>Pure veg. No egg.</span>
+      </div>
+    </footer>
+    <div class="mobile-dock">
+      <OrderButton />
+      <nav aria-label="Mobile navigation">
+        <a href={url('')} aria-current={active === 'home' ? 'page' : undefined}>
+          <Icon name="home" />
+          Home
+        </a>
+        <a href={url('menu/')} aria-current={active === 'menu' ? 'page' : undefined}>
+          <Icon name="food" />
+          Menu
+        </a>
+        <button type="button" data-open-more aria-haspopup="dialog">
+          <Icon name="more" />
+          More
+        </button>
+      </nav>
+    </div>
+    <dialog id="more-dialog" class="more-dialog" aria-labelledby="more-title">
+      <div class="dialog-header">
+        <h2 id="more-title">Around the kitchen</h2>
+        <button class="icon-button" data-close-more aria-label="Close navigation">
+          <Icon name="close" />
+        </button>
+      </div>
+      <a href={url('about/')}>
+        Our kitchen
+        <Icon name="chevron" />
+      </a>
+      <a href={url('blog/')}>
+        Food talk
+        <Icon name="chevron" />
+      </a>
+      <a href={url('sundargarh/')}>
+        Sundargarh
+        <Icon name="chevron" />
+      </a>
+      <a href={url('festivals/')}>
+        Festival season
+        <Icon name="chevron" />
+      </a>
+      <a href={url('contact/')}>
+        Contact & FAQs
+        <Icon name="chevron" />
+      </a>
+      <a href={url('privacy/')}>
+        Privacy
+        <Icon name="chevron" />
+      </a>
+      <button class="text-link" data-install-help>
+        <Icon name="download" />
+        Add to Home Screen
+      </button>
+      <p class="install-help" hidden>
+        On iPhone: use Safari’s Share menu, then Add to Home Screen. On Android: use the browser’s
+        Install app or Add to Home screen option.
+      </p>
+    </dialog>
+    <div id="app-status" class="app-status" role="status" aria-live="polite" hidden></div>
+    <script>
+      import '../scripts/app';
+    </script>
+  </body>
+</html>

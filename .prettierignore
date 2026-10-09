@@ -1,0 +1,12 @@
+.claude/
+skills/
+node_modules/
+dist/
+.astro/
+public/images/
+backend/data/
+*.lock
+package-lock.json
+docs/ASSET_SOURCES.json
+.env*
+.dev.vars*

@@ -1,0 +1,32 @@
+---
+import type { MenuItem } from '../lib/menu';
+import { url } from '../lib/site';
+import FoodImage from './FoodImage.astro';
+import Icon from './Icon.astro';
+const { item } = Astro.props as { item: MenuItem };
+---
+
+<article
+  class="dish-card"
+  data-dish
+  data-category={item.category}
+  data-search={`${item.name} ${item.category} ${item.description}`.toLowerCase()}
+>
+  <a href={url(`menu/${item.id}/`)} class="dish-image" aria-label={`View ${item.name}`}>
+    <FoodImage id={item.id} alt={item.name} />
+  </a>
+  <div class="dish-copy">
+    <h2>
+      <a href={url(`menu/${item.id}/`)}>{item.name}</a>
+    </h2>
+    <p class="veg-label">
+      <Icon name="leaf" size={16} />
+      Pure veg · no egg
+    </p>
+    <p class="dish-method">{item.method || 'A bowl of comfort'}</p>
+    <a class="text-link" href={url(`menu/${item.id}/`)}>
+      View dish
+      <Icon name="external" size={18} />
+    </a>
+  </div>
+</article>

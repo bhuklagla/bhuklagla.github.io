@@ -1,0 +1,30 @@
+import { DatabaseSync } from 'node:sqlite';
+import { readFileSync } from 'node:fs';
+export function createDatabase(filename = ':memory:') {
+  const db = new DatabaseSync(filename);
+  db.exec(readFileSync(new URL('./migrations/0001.sql', import.meta.url), 'utf8'));
+  return {
+    close: () => db.close(),
+    prepare(sql) {
+      let values = [];
+      const statement = () => db.prepare(sql);
+      const query = {
+        bind(...args) {
+          values = args;
+          return query;
+        },
+        async run() {
+          const result = statement().run(...values);
+          return { meta: { changes: Number(result.changes) } };
+        },
+        async first() {
+          return statement().get(...values) || null;
+        },
+        async all() {
+          return { results: statement().all(...values) };
+        },
+      };
+      return query;
+    },
+  };
+}

@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Owner journey report | Bhuk Lagla Kitchen"
+  description="Private owner access to anonymous website journeys."
+  noindex
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Owner access</p>
+    <h1>Website journeys</h1>
+    <p>
+      Anonymous activity for the last 30 days. Zomato handoffs are clicks, not completed orders.
+    </p>
+  </section>
+  <section class="wrap section" data-insights>
+    <form class="insights-toolbar" data-insights-login>
+      <label>
+        Owner token
+        <input type="password" autocomplete="off" name="token" required />
+      </label>
+      <button class="button" type="submit">
+        View report
+      </button>
+    </form>
+    <p role="status" data-insights-status>
+      Use the token from your private backend configuration.
+    </p>
+    <div class="metrics" data-metrics></div>
+    <div data-journeys></div>
+  </section>
+  <script>
+    const api = import.meta.env.PUBLIC_JOURNEY_API || '';
+    const form = document.querySelector<HTMLFormElement>('[data-insights-login]')!;
+    const status = document.querySelector<HTMLElement>('[data-insights-status]')!;
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!api) {
+        status.textContent = 'The journey service is not connected.';
+        return;
+      }
+      status.textContent = 'Loading…';
+      try {
+        const response = await fetch(`${api}/insights`, {
+          headers: { Authorization: `Bearer ${new FormData(form).get('token')}` },
+          credentials: 'omit',
+        });
+        if (!response.ok) throw new Error();
+        const data = await response.json();
+        const metrics = document.querySelector('[data-metrics]')!;
+        metrics.replaceChildren();
+        for (const [type, label] of [
+          ['page_view', 'Visitors'],
+          ['menu_view', 'Menu visitors'],
+          ['zomato_handoff', 'Zomato clicks'],
+          ['enquiry_reported', 'Enquiries (browser-reported)'],
+        ]) {
+          const value = data.metrics.find((row: { type: string }) => row.type === type);
+          const tile = document.createElement('div');
+          tile.className = 'metric';
+          const number = document.createElement('strong');
+          number.textContent = String(
+            type === 'page_view' || type === 'menu_view' ? value?.sessions || 0 : value?.count || 0,
+          );
+          const text = document.createElement('span');
+          text.textContent = label;
+          tile.append(number, text);
+          metrics.append(tile);
+        }
+        const journeys = document.querySelector('[data-journeys]')!;
+        journeys.replaceChildren();
+        const groups = new Map<
+          string,
+          Array<{ type: string; route: string; detail: string; created_at: number }>
+        >();
+        for (const item of data.events) {
+          const list = groups.get(item.session) || [];
+          list.push(item);
+          groups.set(item.session, list);
+        }
+        for (const [session, events] of groups) {
+          const row = document.createElement('div');
+          row.className = 'journey-row';
+          const title = document.createElement('strong');
+          title.textContent = `Visit ${session.slice(0, 8)}`;
+          const path = document.createElement('p');
+          path.textContent = events
+            .reverse()
+            .map(
+              (item) =>
+                `${item.type.replaceAll('_', ' ')}: ${item.route}${item.detail ? ` (${item.detail})` : ''}`,
+            )
+            .join(' → ');
+          row.append(title, path);
+          journeys.append(row);
+        }
+        status.textContent =
+          'Latest 200 events. Completed Zomato orders: unknown. Enquiries: browser-reported Web3Forms success.';
+      } catch {
+        status.textContent = 'Unable to load. Check your owner token and service connection.';
+      }
+    });
+  </script>
+</Layout>

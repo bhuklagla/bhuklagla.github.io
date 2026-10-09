@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import FoodImage from '../../components/FoodImage.astro';
+import { canonical, url } from '../../lib/site';
+import { absolute, displayDate, restaurantId } from '../../lib/seo';
+import { findItem } from '../../lib/menu';
+export async function getStaticPaths() {
+  return (await getCollection('blog')).map((article) => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}
+const { article } = Astro.props;
+const { Content } = await render(article);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.date.toISOString(),
+  author: { '@type': 'Organization', name: 'Bhuk Lagla Kitchen' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Bhuk Lagla Kitchen',
+    logo: { '@type': 'ImageObject', url: absolute('brand/logo.webp') },
+  },
+  image: absolute(`images/menu/${article.data.image}-960.webp`),
+  inLanguage: 'en-IN',
+  about: { '@id': restaurantId() },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': canonical(Astro.url.pathname) },
+  ...(canonical(Astro.url.pathname) ? { url: canonical(Astro.url.pathname) } : {}),
+};
+---
+
+<Layout
+  title={`${article.data.title} | Bhuk Lagla Kitchen`}
+  description={article.data.description}
+  image={`/images/menu/${article.data.image}-960.webp`}
+  schema={schema}
+  active="blog"
+  articleDate={article.data.date.toISOString()}
+>
+  <article class="wrap prose section">
+    <a href={url('blog/')} class="text-link">
+      ← Food talk
+    </a>
+    <p class="eyebrow">{article.data.topic}</p>
+    <h1>{article.data.title}</h1>
+    <p class="article-meta">
+      Bhuk Lagla Kitchen ·{' '}
+      <time datetime={article.data.date.toISOString()}>{displayDate(article.data.date)}</time>
+    </p>
+    <FoodImage
+      id={article.data.image}
+      alt={findItem(article.data.image).name}
+      eager
+      class="article-hero"
+    />
+    <Content />
+    <a href={url('menu/')} class="button">
+      Find your craving →
+    </a>
+  </article>
+</Layout>

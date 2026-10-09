@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import FoodImage from '../components/FoodImage.astro';
+import OrderButton from '../components/OrderButton.astro';
+import { categories } from '../lib/menu';
+import { url } from '../lib/site';
+---
+
+<Layout
+  title="Bhuk Lagla Kitchen | Pizza, Sandwiches & Snacks in Sundargarh"
+  description="Big cravings. Small budget. Discover pure-veg air-fryer pizza, grilled sandwiches, Maggi, pasta and fries at Bhuk Lagla Kitchen, Sundargarh. Order on Zomato."
+  active="home"
+>
+  <section class="hero wrap" data-hero-depth aria-label="Welcome to Bhuk Lagla Kitchen">
+    <div class="hero-copy" data-reveal>
+      <p class="eyebrow">Local kitchen. Big cravings.</p>
+      <h1>
+        Big cravings.
+        <br />
+        <span>Small budget.</span>
+      </h1>
+      <p class="hero-intro">
+        Air-fryer pizzas, grilled sandwiches and snacks.
+        <br class="desktop-break" /> Made for Sundargarh cravings.
+      </p>
+      <img
+        class="hero-mascot"
+        src={url('brand/mascot.webp')}
+        width="840"
+        height="444"
+        alt="Bhuk Lagla's cheerful mascot holding a sandwich and fries"
+        loading="eager"
+        data-hero-plane
+      />
+      <div class="hero-actions">
+        <a href={url('menu/')} class="button">
+          Explore the menu
+          <Icon name="arrow" />
+        </a>
+        <OrderButton label="Zomato offers" secondary />
+      </div>
+      <p class="hero-local">
+        <Icon name="pin" size={16} />
+        Your everyday hunger fix. Made in Sundargarh.
+      </p>
+    </div>
+    <div class="hero-gallery" aria-label="Paneer Chataka Pizza">
+      <a href={url('menu/paneer-chataka-pizza/')} class="hero-feature" data-hero-plane>
+        <FoodImage
+          id="paneer-chataka-pizza"
+          alt="Paneer Chataka Pizza with paneer cubes and onion, photographed at a natural serving angle"
+          eager
+          sizes="(max-width: 860px) 90vw, 45vw"
+        />
+        <span class="photo-caption">
+          Paneer Chataka Pizza
+          <Icon name="external" size={17} />
+        </span>
+      </a>
+    </div>
+  </section>
+  <div class="proof-band">
+    <div class="wrap">
+      <span>
+        <Icon name="leaf" />
+        100% pure veg
+      </span>
+      <span>
+        <Icon name="check" />
+        No egg
+      </span>
+      <span>
+        <Icon name="pin" />
+        Sundargarh, Odisha
+      </span>
+    </div>
+  </div>
+  <section class="wrap section" data-reveal>
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Follow your craving</p>
+        <h2>What sounds good?</h2>
+        <p>A pizza, a sandwich, or a snack break.</p>
+      </div>
+      <a class="text-link" href={url('menu/')}>
+        Browse all
+        <Icon name="arrow" />
+      </a>
+    </div>
+    <div class="category-grid">
+      {categories.slice(0, 3).map((cat) => (
+        <a href={url(`menu/category/${cat.id}/`)} class="category-card">
+          <FoodImage id={cat.imageId} alt={cat.name} />
+          <span>
+            {cat.name}
+            <Icon name="external" />
+          </span>
+        </a>
+      ))}
+    </div>
+    <div class="small-cravings">
+      <a href={url('menu/category/maggi/')}>
+        <FoodImage id="classic-masala-maggi" alt="Classic Masala Maggi" sizes="150px" />
+        <span>
+          More of a Maggi mood?<small>A bowl of comfort.</small>
+        </span>
+        <Icon name="arrow" />
+      </a>
+      <a href={url('menu/category/pasta/')}>
+        <FoodImage id="chatpata-red-sauce-pasta" alt="Chatpata Red Sauce Pasta" sizes="150px" />
+        <span>
+          Pasta for your food break.<small>Creamy or tangy.</small>
+        </span>
+        <Icon name="arrow" />
+      </a>
+    </div>
+  </section>
+  <section class="wrap kitchen-story" data-reveal>
+    <img
+      src={url('brand/mascot.webp')}
+      width="840"
+      height="444"
+      alt="Bhuk Lagla mascot"
+      loading="lazy"
+    />
+    <div>
+      <p class="eyebrow">Hello, Sundargarh</p>
+      <h2>A kitchen for local cravings.</h2>
+      <p>
+        College breaks, after-school hunger, evenings at home. Find your next favourite at Bhuk
+        Lagla Kitchen.
+      </p>
+    </div>
+    <a href={url('about/')} class="button secondary">
+      Our kitchen
+      <Icon name="arrow" />
+    </a>
+  </section>
+  <section class="wrap section food-talk-teaser">
+    <p class="eyebrow">
+      <a href={url('festivals/')}>Festival season in Sundargarh →</a>
+    </p>
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">A little food talk</p>
+        <h2>Good food. Everyday questions.</h2>
+      </div>
+      <a href={url('blog/')} class="text-link">
+        Read the blog
+        <Icon name="arrow" />
+      </a>
+    </div>
+    <div class="article-links">
+      <a href={url('blog/pizza-sandwich-or-snack/')}>
+        <span>Follow your craving</span>
+        <h3>Pizza, a sandwich or a snack?</h3>
+        <Icon name="external" />
+      </a>
+      <a href={url('blog/air-fryer-pizza-and-fries/')}>
+        <span>Our food</span>
+        <h3>A crisp air-fryer finish.</h3>
+        <Icon name="external" />
+      </a>
+    </div>
+  </section>
+</Layout>

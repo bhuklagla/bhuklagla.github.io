@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OrderButton from '../components/OrderButton.astro';
+import { url } from '../lib/site';
+---
+
+<Layout
+  title="Our Kitchen | Pure Veg Food in Sundargarh — Bhuk Lagla Kitchen"
+  description="Meet Bhuk Lagla Kitchen, a local Sundargarh kitchen for pizza, grilled sandwiches and snacks. Pure veg, no egg, with air-fryer cooked pizza and fries."
+  active="about"
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Hello, Sundargarh</p>
+    <h1>
+      A little kitchen.
+      <br />
+      Big local cravings.
+    </h1>
+    <p>Food for study breaks, after-school hunger and evenings at home.</p>
+  </section>
+  <section class="wrap about-story">
+    <img src={url('brand/mascot.webp')} width="840" height="444" alt="Bhuk Lagla Kitchen mascot" />
+    <div>
+      <h2>Big cravings. Small budget.</h2>
+      <p>
+        Bhuk Lagla Kitchen is for people in Sundargarh who want a pizza, a grilled sandwich or
+        something to snack on. Our menu brings together familiar favourites, from paneer pizza and
+        fries to Maggi and pasta.
+      </p>
+      <p>
+        Our food is pure veg and egg-free. We use an air fryer for pizzas and fries; our sandwiches
+        are grilled. Explore the menu here, and check current availability and offers on Zomato.
+      </p>
+      <p class="party-note">
+        <strong>Little birthdays. Big celebrations.</strong>
+        From kids’ birthday bashes to office get-togethers and anniversary celebrations, let Bhuk
+        Lagla bring the bites. For bulk or party orders,{' '}
+        <a href={url('contact/?type=party')}>contact us</a> with your plans and contact
+        details—we’ll get in touch.
+      </p>
+      <div class="about-actions">
+        <a class="button" href={url('menu/')}>
+          Explore the menu →
+        </a>
+        <a class="button secondary" href={url('contact/?type=party')}>
+          Contact us →
+        </a>
+      </div>
+    </div>
+  </section>
+  <section class="wrap note-panel">
+    <div>
+      <h2>Your local hunger fix.</h2>
+      <p>Sundargarh, Odisha. Browse here and order on Zomato.</p>
+    </div>
+    <OrderButton />
+  </section>
+</Layout>

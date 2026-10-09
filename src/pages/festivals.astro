@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import FoodImage from '../components/FoodImage.astro';
+import { url } from '../lib/site';
+import { findItem } from '../lib/menu';
+const sequence = [
+  'navratri-garba-sundargarh-2026',
+  'durga-puja-dussehra-sundargarh-2026',
+  'diwali-party-food-sundargarh-2026',
+];
+const articles = (await getCollection('blog'))
+  .filter((article) => sequence.includes(article.id))
+  .sort((a, b) => sequence.indexOf(a.id) - sequence.indexOf(b.id));
+---
+
+<Layout
+  title="Sundargarh Festival Food Guide 2026 | Bhuk Lagla Kitchen"
+  description="Plan Navratri, Garba evenings, Durga Puja, Dussehra and Diwali gatherings in Sundargarh. Browse vegetarian snacks and send a party-food enquiry."
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Sundargarh · Festival season 2026</p>
+    <h1>
+      Big celebrations.
+      <br />
+      Little food plans.
+    </h1>
+    <p>
+      From an evening with friends to a family gathering, find a little inspiration for your next
+      bite.
+    </p>
+    <div class="about-actions">
+      <a class="button" href={url('menu/')}>
+        Explore the menu →
+      </a>
+      <a class="button secondary" href={url('contact/?type=party')}>
+        Plan a party →
+      </a>
+    </div>
+  </section>
+  <section class="wrap section blog-grid" aria-label="Festival planning guides">
+    {articles.map((article) => (
+      <article class="blog-card">
+        <a href={url(`blog/${article.id}/`)}>
+          <FoodImage id={article.data.image} alt={findItem(article.data.image).name} />
+          <h2>{article.data.title}</h2>
+        </a>
+        <p>{article.data.description}</p>
+        <a class="text-link" href={url(`blog/${article.id}/`)}>
+          Read the guide →
+        </a>
+      </article>
+    ))}
+  </section>
+  <section class="wrap prose section">
+    <h2>Your regular veg menu. Your own celebration.</h2>
+    <p>
+      Our menu is pure veg and egg-free. It is a regular menu, not a dedicated Navratri fasting
+      menu. Check dietary requirements before choosing dishes.
+    </p>
+    <p>
+      These guides offer food-planning ideas and sourced calendar information. Local events need
+      confirmation from their organisers. Bhuk Lagla Kitchen does not organise or sell tickets for
+      Garba or pandal events.
+    </p>
+    <p>
+      Check current item availability, delivery eligibility and account-specific offers on Zomato.
+      For a group gathering, send your date, guest count and contact details through our{' '}
+      <a href={url('contact/?type=party')}>party enquiry form</a>; arrangements need confirmation
+      from the kitchen.
+    </p>
+  </section>
+</Layout>

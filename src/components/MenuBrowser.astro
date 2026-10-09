@@ -1,0 +1,56 @@
+---
+import { menu, categories } from '../lib/menu';
+import DishCard from './DishCard.astro';
+import Icon from './Icon.astro';
+const { category = 'all' } = Astro.props;
+const items = category === 'all' ? menu : menu.filter((item) => item.category === category);
+---
+
+<div data-menu-browser data-initial-category={category}>
+  <div class="menu-tools">
+    <div class="search-box" role="search" aria-label="Menu search">
+      <span class="search-symbol">
+        <Icon name="search" size={22} />
+      </span>
+      <label class="search-field">
+        <span class="search-label">Search the menu</span>
+        <input
+          type="search"
+          placeholder="Try pizza or Maggi…"
+          data-menu-search
+          autocomplete="off"
+        />
+      </label>
+      <button type="button" data-clear-search class="icon-button" aria-label="Clear search" hidden>
+        <Icon name="close" />
+      </button>
+    </div>
+    {category === 'all' && (
+      <div class="filter-row" aria-label="Filter menu by category">
+        <button data-filter="all" aria-pressed="true">
+          All food
+        </button>
+        {categories.map((cat) => (
+          <button data-filter={cat.id} aria-pressed="false">
+            {cat.name}
+          </button>
+        ))}
+      </div>
+    )}
+  </div>
+  <p class="menu-count" data-menu-count aria-live="polite">
+    {items.length} dishes · Check availability on Zomato
+  </p>
+  <div class="dish-grid">
+    {items.map((item) => (
+      <DishCard item={item} />
+    ))}
+  </div>
+  <div class="empty-state" data-no-results hidden>
+    <h2>No dishes found</h2>
+    <p>Try pizza, sandwich or Maggi, or clear your search.</p>
+    <button class="button secondary" data-reset-menu>
+      Show all dishes
+    </button>
+  </div>
+</div>

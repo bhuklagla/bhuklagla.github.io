@@ -1,0 +1,46 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MenuBrowser from '../../components/MenuBrowser.astro';
+import OrderButton from '../../components/OrderButton.astro';
+import { menu, categories } from '../../lib/menu';
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Menu',
+  name: 'Bhuk Lagla Kitchen menu',
+  hasMenuSection: categories.map((category) => ({
+    '@type': 'MenuSection',
+    name: category.name,
+    hasMenuItem: menu
+      .filter((item) => item.category === category.id)
+      .map((item) => ({
+        '@type': 'MenuItem',
+        name: item.name,
+        description: item.description,
+        suitableForDiet: 'https://schema.org/VegetarianDiet',
+      })),
+  })),
+};
+---
+
+<Layout
+  title="Menu | Pizza, Sandwiches, Maggi & Snacks — Bhuk Lagla Kitchen"
+  description="Browse 23 pure-veg dishes from Bhuk Lagla Kitchen in Sundargarh. Explore air-fryer pizza, grilled sandwiches, fries, Maggi and pasta, then order on Zomato."
+  active="menu"
+  schema={schema}
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Find your hunger fix</p>
+    <h1>What are you craving?</h1>
+    <p>Pure veg. No egg. Pick a dish, then head to Zomato.</p>
+  </section>
+  <section class="wrap menu-section">
+    <MenuBrowser />
+  </section>
+  <section class="wrap note-panel">
+    <div>
+      <h2>Ready to order?</h2>
+      <p>Zomato shows current availability, delivery options and offers eligible for you.</p>
+    </div>
+    <OrderButton />
+  </section>
+</Layout>

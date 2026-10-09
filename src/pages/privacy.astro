@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { business } from '../lib/site';
+---
+
+<Layout
+  title="Privacy | Bhuk Lagla Kitchen"
+  description="How Bhuk Lagla Kitchen handles contact enquiries, optional journey measurement and links to Zomato."
+>
+  <article class="wrap prose section">
+    <p class="eyebrow">Updated 9 October 2026</p>
+    <h1>Privacy</h1>
+    <h2>Contact enquiries</h2>
+    <p>
+      When you send the form, your name, email, phone number, message and any optional event details
+      are sent directly to Web3Forms and delivered to the kitchen’s email account. We use them to
+      reply and discuss your enquiry. Please do not include payment or sensitive personal details.
+    </p>
+    <p>
+      Web3Forms processes submissions under its{' '}
+      <a href="https://web3forms.com/privacy" rel="noopener" target="_blank">
+        privacy policy
+      </a>
+      . The kitchen retains enquiry emails only while needed for the conversation and any agreed
+      arrangements. You can email {business.email} to request access or deletion, subject to records
+      we must retain.
+    </p>
+    <h2>Optional anonymous journey measurement</h2>
+    <p>
+      Measurement is off unless you choose to allow it. If allowed, we create a random session
+      identifier for the current browser session and record page, category and dish views, menu
+      filter/search use, contact link clicks, enquiry form activity, Zomato link clicks and
+      browser-reported successful enquiries. We do not record names, email addresses, phone numbers,
+      typed search terms or precise locations in journey events.
+    </p>
+    <p>
+      These events may produce a notification for the kitchen containing a short anonymous journey.
+      Notifications use ntfy. The notification topic has an unguessable address, but is not an
+      access-controlled private channel, so contact details are excluded. Our journey service
+      retains events for up to 30 days. Network addresses are used only to enforce rate limits;
+      rate-limit identifiers are hashed.
+    </p>
+    <p>
+      A Zomato click does not tell us whether you completed an order. Browser-reported form success
+      is not independently verified by the journey service.
+    </p>
+    <button class="button secondary" data-privacy-settings>
+      Change measurement choice
+    </button>
+    <h2>Local storage and offline use</h2>
+    <p>
+      The website stores your measurement choice and, if installed or cached, public website files
+      for offline browsing. The cached menu may be older than Zomato’s live menu. You cannot order
+      from Zomato while offline.
+    </p>
+    <h2>Zomato and other links</h2>
+    <p>
+      Zomato controls its own account, delivery, payment and offer information under its policies.
+      We do not receive your Zomato order status through this website.
+    </p>
+    <h2>Contact</h2>
+    <p>
+      Bhuk Lagla Kitchen, Sundargarh, Odisha. Email{' '}
+      <a href={`mailto:${business.email}`}>{business.email}</a>.
+    </p>
+  </article>
+</Layout>
