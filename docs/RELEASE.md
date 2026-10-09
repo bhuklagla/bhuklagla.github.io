@@ -1,8 +1,20 @@
-# Live release — 9 October 2026
+# Live release — 10 October 2026
 
-10 October backend release: Bhuk Lagla's own free Cloudflare account now serves `https://bhuk-lagla-journeys.bhuklagla.workers.dev`. Production/staging D1 migrations succeeded and live privacy/auth/body-limit checks passed. The initial ntfy.sh 522 problem is resolved through a separate free Render ntfy server; a live Worker alert was received. Phone delivery remains unverified and failures are queued for retry. The source update also prepares owner-based Pages origin/base selection for the required `https://bhuklagla.github.io/` move, which remains blocked on GitHub signup email validation. Current evidence and secrets boundaries are in `NOTIFICATIONS_SETUP.md`. The checked Pages integration release is pending below.
+The exact requested customer address **https://bhuklagla.github.io/** is live and was verified publicly at approximately 02:08 IST on 10 October. Milan approved the free `bhuklagla` organization under his existing account and its Customer Agreement. The repository was transferred with history intact; GitHub confirms Free plan, active owner admin, public repository and HTTPS enforced.
 
-Website: [Bhuk Lagla Kitchen](https://milanbeherazyx.github.io/bhuklagla.github.io/).
+Website: [Bhuk Lagla Kitchen](https://bhuklagla.github.io/). Repository: [bhuklagla/bhuklagla.github.io](https://github.com/bhuklagla/bhuklagla.github.io).
+
+Root release: commit `4db7d874e378b40bce472b2434dd892f0c4956ed`, [PR #3](https://github.com/bhuklagla/bhuklagla.github.io/pull/3). [Pages deployment 37987961616](https://github.com/bhuklagla/bhuklagla.github.io/actions/runs/37987961616) and [main checks 37987962046](https://github.com/bhuklagla/bhuklagla.github.io/actions/runs/37987962046) succeeded. Source checks passed before merge. Builds repeat formatting, Astro/catalogue validation, ten backend tests and static artifact/SEO checks.
+
+At the root address, all 42 indexable pages returned HTTP 200 with matching root-host canonicals and breadcrumbs; all 23 image-sitemap assets returned successfully. Six RSS entries, manifest start URL `/`, icons, favicon, robots, service worker and utility noindex checks passed. One initial image request returned transient HTTP 503; the complete repeated verifier passed. Browser menu search for paneer returned two dishes; party-first contact navigation and required Phone are intact. Zomato links retain the approved smart link. No form enquiry or order was submitted during this release.
+
+Bhuk Lagla's own free Worker/D1 is connected. Declined live browsing on the preceding project-host release produced no new events. Root-host opted-in QA recorded page/menu/search/dish/contact navigation, with an empty search detail and no personal contact data. Its anonymous contact-intent alert appeared in the laptop's **Bhuk Lagla Kitchen** feed. Synthetic setup records are not customer activity or Zomato orders. Notification acceptance is distinct from phone receipt; Android subscription is confirmed, physical test receipt remains unconfirmed. Failed notifications retry for up to 24 hours.
+
+Web3Forms' recorded Website URL is `https://bhuklagla.github.io/contact/`, saved and verified after dashboard reload. The recipient remains the kitchen email, on its Free plan. The mobile home layout showed no horizontal overflow; both hero images were loaded.
+
+Private evidence stays outside Git under `../outputs/website-demo`: `verify-root-live-seo.py`, `root-journey-verification.json`, `bhuklagla-root-live-desktop.jpg`, `bhuklagla-root-live-mobile.jpg`, `web3forms-root-address-saved.jpg`, `ntfy-laptop-rechecked.jpg`. Keep the ntfy tab open for laptop alerts. See `NOTIFICATIONS_SETUP.md` for resources, secrets boundaries and free-hosting limitations.
+
+## Earlier project-host release
 
 Release commit: `40a278b825a1b104a94b2badf5bd8dd337a1649e` on `main`, merged through [PR #1](https://github.com/milanbeherazyx/bhuklagla.github.io/pull/1). Review commit: `1a55e15887f0f7323c1dab3362d1aba18e33dbd4`.
 
@@ -18,8 +30,10 @@ Release commit: `40a278b825a1b104a94b2badf5bd8dd337a1649e` on `main`, merged thr
 
 ## Remaining account setup
 
-The available Cloudflare CLI belongs to The Oven Vibe; nothing was deployed there. The owner needs to create/sign into the separate free Bhuk Lagla account using `bhuklagla@outlook.com`, then configure the prepared Worker/D1 and backend-only secrets. Public ntfy/journey measurement remains disabled until the real HTTPS endpoint is set. Local test records are not production customer data.
+The historical Cloudflare-account blocker is resolved: Bhuk Lagla's separate Free account, production/staging D1, Worker and Render ntfy service are deployed. No Oven Vibe infrastructure was changed. PR #2, commit `da0d695403412e1ed4c4c0cf649c9da1993d0612`, first enabled checked Pages measurement; deployment `37987370986` succeeded before the repository transfer.
 
 Google Search Console verification and sitemap submission need the owner's Google account and actual verification file/tag. Additional public street address/hours/phone and Bhuk Lagla's Google Business Profile link are pending; the site keeps Sundargarh + email. Rankings, virality and completed Zomato orders are not guaranteed or invented. See [SEO launch](SEO_LAUNCH.md).
 
-The local preview is now `http://127.0.0.1:4321/bhuklagla.github.io/`; local journeys remain at `http://127.0.0.1:8787`. Existing Oven Vibe repositories/accounts/channels and the root website were unchanged. Historical pre-launch evidence is retained in Git history and `BUILD_HANDOFF.md`.
+Local production-target preview now uses `http://127.0.0.1:4321/`. For local journey QA, select the local backend and its ignored configuration; production does not allow localhost origins. Historical pre-launch evidence is retained in Git history and `BUILD_HANDOFF.md`.
+
+The deferred FreeDomains account inspection found an existing `bhuklagla.com` record marked **Pending / Not Activated**. It is not configured as this website's domain, and zero-cost registration/renewal was not established. No paid activation, domain purchase or custom-domain change was made; the approved live customer address remains the GitHub root URL.

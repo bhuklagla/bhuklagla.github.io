@@ -1,5 +1,7 @@
 # Bhuk Lagla Kitchen — product requirements
 
+10 October verified release: https://bhuklagla.github.io/ is live on the free bhuklagla organization, transferred with history intact. Root Pages deployment 37987961616 and main checks 37987962046 succeeded; all 42 canonical pages, 23 sitemap images, six RSS entries, root PWA assets and anonymous contact-intent delivery were checked live. This supersedes historical personal-host/signup/backend-pending notes below. See docs/RELEASE.md (RELEASE.md from this folder) and NOTIFICATIONS_SETUP.md for actual evidence and remaining follow-ups.
+
 10 October update: all infrastructure must stay on free plans. Cloudflare Workers/D1 are deployed in the separate kitchen-email account. Production alerts need verified ntfy delivery; store/retry failures and distinguish provider acceptance from phone receipt. Customer hosting must become `https://bhuklagla.github.io/`, matching The Oven Vibe's separate GitHub user/repository pattern. Signup is blocked by GitHub's Outlook-email validation until the owner supplies another email or selects an organisation. See `docs/NOTIFICATIONS_SETUP.md`; these decisions supersede the older account-pending and final-URL statements below.
 
 9 October 2026. Build authorised by Milan. Selected visual direction: Kitchen Studio.

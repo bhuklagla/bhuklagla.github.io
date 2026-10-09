@@ -1,5 +1,7 @@
 # Build handoff — 9 October 2026
 
+10 October verified release: https://bhuklagla.github.io/ is live on the free bhuklagla organization, transferred with history intact. Root Pages deployment 37987961616 and main checks 37987962046 succeeded; all 42 canonical pages, 23 sitemap images, six RSS entries, root PWA assets and anonymous contact-intent delivery were checked live. This supersedes historical personal-host/signup/backend-pending notes below. See docs/RELEASE.md (RELEASE.md from this folder) and NOTIFICATIONS_SETUP.md for actual evidence and remaining follow-ups.
+
 10 October update: Cloudflare's separate free kitchen account, official skills/MCP, Worker and production/staging D1 are configured. Live journey checks passed; the free separate Render ntfy server received a Worker milestone. Failed alerts remain queued for retry. The customer-address target is now `https://bhuklagla.github.io/`; GitHub signup is blocked on Outlook validation. See `NOTIFICATIONS_SETUP.md` for current resources, credentials boundary and owner handoffs. Historical statements below do not override this status.
 
 Current state: the website is now published on GitHub Pages. [RELEASE.md](RELEASE.md) records commit `40a278b`, successful deployment/checks and live verification. The local preview moved to `http://127.0.0.1:4321/bhuklagla.github.io/`. Bhuk Lagla's separate Cloudflare backend account and Search Console setup remain pending. The following implementation notes are historical pre-launch evidence.

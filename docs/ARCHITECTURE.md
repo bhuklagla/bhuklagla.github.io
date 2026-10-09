@@ -1,5 +1,7 @@
 # Website architecture
 
+10 October verified release: https://bhuklagla.github.io/ is live on the free bhuklagla organization, transferred with history intact. Root Pages deployment 37987961616 and main checks 37987962046 succeeded; all 42 canonical pages, 23 sitemap images, six RSS entries, root PWA assets and anonymous contact-intent delivery were checked live. This supersedes historical personal-host/signup/backend-pending notes below. See docs/RELEASE.md (RELEASE.md from this folder) and NOTIFICATIONS_SETUP.md for actual evidence and remaining follow-ups.
+
 10 October update: production journeys use the deployed `bhuk-lagla-journeys.bhuklagla.workers.dev` Worker with D1 in Bhuk Lagla's own free account. A 24-hour D1 notification outbox leases alerts, records provider acceptance/failure and retries through a five-minute cron. It prevents immediate loss on ntfy failure; exactly-once delivery or phone receipt is not claimed. Bodies are limited by streamed UTF-8 byte count, owner-token verification uses cryptographic comparison, and retention/retry predicates are indexed. The original ntfy.sh 522 issue is resolved through Bhuk Lagla's separate free Render ntfy server; a live Worker alert was received. See `NOTIFICATIONS_SETUP.md`. Pages workflows derive the owner host and root/project base so the requested separate `bhuklagla` account can serve the exact root address after signup/transfer.
 
 9 October 2026. Implementation follows the approved Kitchen Studio direction and PRD.
