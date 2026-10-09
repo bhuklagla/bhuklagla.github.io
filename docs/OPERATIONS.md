@@ -2,11 +2,13 @@
 
 ## Current state
 
-Full local website built. Web3Forms free account is owned by `bhuklagla@outlook.com`, with the kitchen enquiry form and that recipient verified in the dashboard. The public form identifier is in `.env.example`; its setup website is currently `localhost`. A clearly labelled party setup submission was accepted by the API and visible in the provider inbox on 9 October 2026. Do not treat that record as a customer enquiry.
+Published website: `https://milanbeherazyx.github.io/bhuklagla.github.io/`. GitHub Pages deploys the checked `dist` artifact from `main`; see `RELEASE.md` for successful live verification. Web3Forms' Website URL now points to the public contact page. Production journey measurement remains disabled until Bhuk Lagla's own Cloudflare backend account is ready. These launch facts supersede the older local setup notes below.
+
+Web3Forms free account is owned by `bhuklagla@outlook.com`, with the kitchen enquiry form and that recipient verified in the dashboard. The public form identifier is in `.env.example`; its website setting is now the live contact-page URL, verified after reloading the dashboard. A clearly labelled party setup submission was accepted by the API and visible in the provider inbox on 9 October 2026. Do not treat that record as a customer enquiry.
 
 A random Bhuk Lagla-specific ntfy channel is subscribed in the owner’s existing browser account. Setup notification and a real anonymous local-test enquiry journey were received. Its URL is saved only in ignored `backend/.dev.vars` and the subscribed browser tab. Existing Oven Vibe channels and settings were not altered. This free channel is unlisted, not access-controlled private.
 
-Static preview: `http://127.0.0.1:4321/`. Journey service: `http://127.0.0.1:8787`. These work only while the local processes run; they are not public deployments.
+Static preview: `http://127.0.0.1:4321/bhuklagla.github.io/`. Journey service: `http://127.0.0.1:8787`. These local services work only while their processes run; the GitHub Pages website is independently public.
 
 ## Local environment
 
@@ -18,7 +20,7 @@ Local anonymous test data is in ignored `backend/data/journeys.sqlite`. Do not t
 
 ## Public launch configuration
 
-Owner hosting choice is pending. GitHub holds source and checks. The repository name does not itself provide `bhuklagla.github.io`; the configured hosting account/domain determines the actual URL.
+The approved host is GitHub Pages at the owner/project URL above. No domain or Cloudflare website is required. Its workflow sets the actual HTTPS origin and `/bhuklagla.github.io/` base path. Do not use The Oven Vibe's available CLI account for the separate notification service. The live site has no journey endpoint until Bhuk Lagla's service is ready.
 
 For a static host connected to GitHub: build `npm run build`, output `dist`, Node 24. Configure `PUBLIC_SITE_URL` as the actual approved HTTPS origin, `PUBLIC_BASE_PATH` for any project subpath, `PUBLIC_WEB3FORMS_KEY`, and the deployed HTTPS `PUBLIC_JOURNEY_API`. Without a site URL, preview noindex stays enabled.
 
@@ -44,4 +46,4 @@ Contact defaults to Party / bulk order enquiry, with A general question below it
 
 Maintain public catalogue records in `src/data/menu.json`. Current availability remains “Check on Zomato”; hide a dish with `visible: false` only through an authorised content change and update expected catalogue validation deliberately. Never infer stock from old Oven Vibe tracking.
 
-Source changes run GitHub checks. Public deployment is a separate action. Keep rollback as a reviewed Git revert and host rebuild, with service-worker version/update behaviour verified.
+Source changes run GitHub checks; changes merged into `main` run the checked GitHub Pages deployment workflow. Keep rollback as a reviewed Git revert and host rebuild, with service-worker version/update behaviour verified.

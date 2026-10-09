@@ -44,3 +44,7 @@ Lighthouse/field Core Web Vitals and Google indexing/ranking have not been measu
 ## SEO launch verification — 9 October 2026
 
 Astro check: zero errors/warnings/hints. Six backend tests pass. Build generates 45 pages, with 42 indexable pages verified against the canonical sitemap; 23 image entries and six RSS articles verified. Unique titles, one H1 per page, BreadcrumbList JSON-LD, local asset/link resolution, noindex utility exclusions and public-content boundaries pass. Festival hub and Navratri article fit 320px and 390px with no horizontal overflow. All observed photos load. Production canonical uses the GitHub Pages project path. Backend route validation includes new festival/blog paths. Cloudflare production notifications and Search Console verification remain pending owner setup.
+
+## Public release verification
+
+GitHub Pages deployment 37966728855 and main checks 37966728793 passed for commit 40a278b. All 42 indexable URLs returned HTTP 200 with matching canonical URLs; 23 images, six RSS entries, XML parsing, manifest/icons/favicons, noindex utility pages and approved Zomato destination passed. The public menu search returned two paneer dishes and contact required Phone, with party first and general second. No new test enquiry or Zomato order was placed. Details and remaining owner setup are in RELEASE.md.

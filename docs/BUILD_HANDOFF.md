@@ -1,5 +1,7 @@
 # Build handoff — 9 October 2026
 
+Current state: the website is now published on GitHub Pages. [RELEASE.md](RELEASE.md) records commit `40a278b`, successful deployment/checks and live verification. The local preview moved to `http://127.0.0.1:4321/bhuklagla.github.io/`. Bhuk Lagla's separate Cloudflare backend account and Search Console setup remain pending. The following implementation notes are historical pre-launch evidence.
+
 Website implementation commit: `c57f14c568c715dfc3cf7498e7eaffcfd9402ff3` on `website/kitchen-studio`.
 
 Draft review: [PR #1](https://github.com/milanbeherazyx/bhuklagla.github.io/pull/1).

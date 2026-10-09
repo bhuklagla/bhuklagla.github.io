@@ -14,7 +14,7 @@ The shared public catalogue is `src/data/menu.json`: 23 records, five website ca
 
 Home → searchable menu → category or dish → Zomato. Desktop navigation: Home, Menu, Our kitchen, Food talk. Mobile navigation: Home, Menu, More, with a separate persistent Order on Zomato action. More and the footer expose Contact, Sundargarh and Privacy. Party enquiries link to `/contact/?type=party`.
 
-41 HTML routes: home; menu; five categories; 23 dishes; about; Sundargarh; contact; privacy; offline; 404; blog index and three articles; private owner-report shell. Manifest and robots are generated endpoints. Sitemap is enabled only with a configured public URL. The owner shell is noindex and contains no report or credential until authenticated.
+45 HTML routes: home; menu; five categories; 23 dishes; about; Sundargarh; contact; privacy; offline; 404; blog index and six articles; festival hub; private owner-report shell. Manifest, robots and RSS are generated endpoints. Canonical and image sitemaps are validated during each production build. The owner shell is noindex and contains no report or credential until authenticated. Festival season is linked from the home, blog, More menu and footer.
 
 ## Form and journey data
 
@@ -38,11 +38,13 @@ The free ntfy channel is random and unlisted, not access-controlled private. Not
 
 ## SEO and caching
 
-Dish/category pages, useful original articles, local Sundargarh copy, page-specific metadata and price-free Restaurant/Menu/MenuItem/BlogPosting schema. Restaurant address publishes city, region and country only, matching the owner’s publication choice. Google local-business rich-result eligibility is not claimed without its required business facts. No invented reviews, ratings, hours or offers.
+Dish/category pages, useful original articles, local Sundargarh copy, page-specific metadata and price-free Restaurant/WebSite/WebPage/BreadcrumbList/MenuItem/BlogPosting schema. Restaurant address publishes city, region and country only, matching the owner’s publication choice. Google local-business rich-result eligibility is not claimed without its required business facts. No invented reviews, ratings, hours or offers.
 
 All paths respect Astro’s base configuration. Manifest scope/start URL and worker scope remain within that base. Service-worker navigation is network-first with a cached page/offline fallback; same-origin public assets are cached as visited. Queries do not fragment the page cache. External forms, journey calls, Zomato and the owner report are not cached. The UI explains offline limitations and offers an update when a new worker waits.
 
 ## Primary references
+
+Production: GitHub Pages publishes the checked static artifact from `main` to `https://milanbeherazyx.github.io/bhuklagla.github.io/`. Canonicals, assets, manifest and service worker share that project base path. The separate Worker/D1 is pending Bhuk Lagla's own Cloudflare account; production anonymous measurement stays disabled until its endpoint is configured. See `RELEASE.md` and `SEO_LAUNCH.md`.
 
 - [Astro static deployment](https://docs.astro.build/en/guides/deploy/github/)
 - [Astro content collections](https://docs.astro.build/en/guides/content-collections/)
