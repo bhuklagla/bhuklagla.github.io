@@ -10,7 +10,19 @@ function walk(dir) {
   });
 }
 const files = walk(root);
-const html = files.filter((file) => file.endsWith('.html'));
+const verificationFiles = new Set(
+  files.filter(
+    (file) => path.dirname(file) === root && /^google[0-9a-f]+\.html$/.test(path.basename(file)),
+  ),
+);
+for (const file of verificationFiles) {
+  assert.equal(
+    readFileSync(file, 'utf8').trim(),
+    `google-site-verification: ${path.basename(file)}`,
+    `Exact Google verification response: ${file}`,
+  );
+}
+const html = files.filter((file) => file.endsWith('.html') && !verificationFiles.has(file));
 const articleCount = readdirSync('src/content/blog').filter((name) => name.endsWith('.md')).length;
 const menuCount = JSON.parse(readFileSync('src/data/menu.json', 'utf8')).filter(
   (item) => item.visible,
@@ -97,5 +109,5 @@ if (process.env.PUBLIC_SITE_URL) {
 assert.equal(manifest.display, 'standalone');
 manifest.icons.forEach((icon) => resolveLink(icon.src, path.join(root, 'index.html')));
 console.log(
-  `Build verified: ${html.length} pages, local links/assets, structured data, manifest and public-content boundaries.`,
+  `Build verified: ${html.length} pages, ${verificationFiles.size} Google verification files, local links/assets, structured data, manifest and public-content boundaries.`,
 );

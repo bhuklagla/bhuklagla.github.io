@@ -10,3 +10,5 @@ package-lock.json
 docs/ASSET_SOURCES.json
 .env*
 .dev.vars*
+# Google's downloaded verification response must retain its original bytes.
+public/google4298d4229c1cdec8.html
