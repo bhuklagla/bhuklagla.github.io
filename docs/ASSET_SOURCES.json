@@ -1,0 +1,121 @@
+{
+  "originalsPreserved": true,
+  "photoCollection": "Menu Images v2 - Natural Serving Angle",
+  "items": [
+    {
+      "id": "onion-chataka-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Onion Chataka Pizza.png",
+      "sha256": "e94233ab2a15e82b25c651a173c77f69c4d0c5d7dacf7d4f7f21cb83ada5b563"
+    },
+    {
+      "id": "corn-masti-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Corn Masti Pizza.png",
+      "sha256": "0e40720aa0b0576df42d4b0d72f781e08ffe734fb6b33b74b10b6b8ea6ecc30b"
+    },
+    {
+      "id": "double-veg-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Double Veg Pizza.png",
+      "sha256": "a6c146478ed5ca8c6888459132f037501a179bc29299d88b5b9b4807cc4a6a58"
+    },
+    {
+      "id": "schezwan-veg-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Schezwan Veg Pizza.png",
+      "sha256": "959d4b598dfaae70591fc80d6074c1e479be4a25ffbf74d49cc02ecf373c3442"
+    },
+    {
+      "id": "paneer-chataka-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Paneer Chataka Pizza.png",
+      "sha256": "cf907f76814d811c77247a4511e68061d2d5f4d6d78cf6919177e18858b041d5"
+    },
+    {
+      "id": "corn-olive-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Corn Olive Pizza.png",
+      "sha256": "114a50ff72c49b65b6cbba29b7d42babcc6bd1727afa271835fc64802526ac15"
+    },
+    {
+      "id": "capsicum-olive-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Capsicum Olive Pizza.png",
+      "sha256": "a159d6a9f1b807cb0d71b530752ac490eacb77be7584d6135394ac4afa2a233b"
+    },
+    {
+      "id": "chilli-onion-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Chilli Onion Pizza.png",
+      "sha256": "82126964785881244c3f880f34f7b40f8594eec86132e31f70b12612275d27b4"
+    },
+    {
+      "id": "schezwan-corn-pizza",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pizza/Schezwan Corn Pizza.png",
+      "sha256": "79eafa7c6c09853691acc006f2f981fb13f1748e60f0b09e66601621f1e2a97b"
+    },
+    {
+      "id": "creamy-veg-grilled-sandwich",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Grilled Sandwich/Creamy Veg Grilled Sandwich.png",
+      "sha256": "2e9a18dbf85a9d76ec16e639a3c9f9cc607a7c9c85a3fa41fa5a60d8b3a0cb3c"
+    },
+    {
+      "id": "corn-cream-grilled-sandwich",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Grilled Sandwich/Corn Cream Grilled Sandwich.png",
+      "sha256": "e753ebcbb56340bbaeeccd8f2824482f7d2e2b525f0617ca6f9f97cd9959693e"
+    },
+    {
+      "id": "schezwan-corn-grilled-sandwich",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Grilled Sandwich/Schezwan Corn Grilled Sandwich.png",
+      "sha256": "3dc1ce1daa5ff52bcbbca8a5e1a9139e84d1c33e7eaf351d9554c24d0d6aaebc"
+    },
+    {
+      "id": "paneer-tandoori-grilled-sandwich",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Grilled Sandwich/Paneer Tandoori Grilled Sandwich.png",
+      "sha256": "f945f0de9ff287d2b7601826fe0a635730e428f2cb8e63d772e7096c5abad4c5"
+    },
+    {
+      "id": "veg-cheese-slice-grilled-sandwich",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Cheese Slice Grilled Sandwich/Veg Cheese Slice Grilled Sandwich.png",
+      "sha256": "0046a0fbaa36f0458aa4eb5758ffa3755d03ab387038b66e8e7f11439cf2b029"
+    },
+    {
+      "id": "corn-cheese-slice-grilled-sandwich",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Cheese Slice Grilled Sandwich/Corn Cheese Slice Grilled Sandwich.png",
+      "sha256": "5daa9fe712d3870e3a85e392cb1fec5ffeb3e76f70a0b08ef0664899b7b7ebc1"
+    },
+    {
+      "id": "classic-masala-maggi",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Maggi/Classic Masala Maggi.png",
+      "sha256": "5656d0e705def167e71d30f566243fc6e475b226d0d40a7dcb6984c31dadad6a"
+    },
+    {
+      "id": "veg-masala-maggi",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Maggi/Veg Masala Maggi.png",
+      "sha256": "52574a4734e0694e496529faf865547177dd136ecb13fa5074c921d95aad0be1"
+    },
+    {
+      "id": "cheese-maggi",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Maggi/Cheese Maggi.png",
+      "sha256": "542d5a9aacfedcaeedeef56eb7a37540f4550af851880dd4b371f67099c44c39"
+    },
+    {
+      "id": "schezwan-maggi",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Maggi/Schezwan Maggi.png",
+      "sha256": "bb5ab19eff63f05287c5c8e42d4796468f8281cb96eba04366b001d877152423"
+    },
+    {
+      "id": "chatpata-red-sauce-pasta",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pasta/Chatpata Red Sauce Pasta.png",
+      "sha256": "bf4eb5a854f5db87ac2efdf3323fa1cbcf986e442a1a6c4d044e23d0000557d8"
+    },
+    {
+      "id": "creamy-white-sauce-pasta",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Pasta/Creamy White Sauce Pasta.png",
+      "sha256": "ce93161196ab0f7f1ab90ce25838e6e5d8e9d47408eb48a389c140576fdaaef1"
+    },
+    {
+      "id": "classic-salted-fries",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Sides & Snacks/Classic Salted Fries.png",
+      "sha256": "47ff75cb8f8b9655b3c84af6d2f399fbb6e28f9cd3fa305fad7647ad3ae64bd6"
+    },
+    {
+      "id": "peri-peri-fries",
+      "source": "Zomato/Menu Images v2 - Natural Serving Angle/Sides & Snacks/Peri Peri Fries.png",
+      "sha256": "25dfb6a79c62332f365c31eb570ca23071f5e718b03254474593a4011a40ef40"
+    }
+  ]
+}

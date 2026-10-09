@@ -1,0 +1,42 @@
+---
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Menu,
+  House,
+  Utensils,
+  Ellipsis,
+  Leaf,
+  Check,
+  MapPin,
+  Search,
+  X,
+  Share2,
+  Download,
+  Mail,
+  WifiOff,
+  ChevronRight,
+} from '@lucide/astro';
+const icons = {
+  arrow: ArrowRight,
+  external: ArrowUpRight,
+  menu: Menu,
+  home: House,
+  food: Utensils,
+  more: Ellipsis,
+  leaf: Leaf,
+  check: Check,
+  pin: MapPin,
+  search: Search,
+  close: X,
+  share: Share2,
+  download: Download,
+  mail: Mail,
+  offline: WifiOff,
+  chevron: ChevronRight,
+};
+const { name = 'arrow', size = 20 } = Astro.props as { name?: keyof typeof icons; size?: number };
+const Component = icons[name];
+---
+
+<Component size={size} stroke-width={1.8} aria-hidden="true" />

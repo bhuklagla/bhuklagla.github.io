@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { url } from '../lib/site';
+---
+
+<Layout
+  title="Page not found | Bhuk Lagla Kitchen"
+  description="Find your way back to Bhuk Lagla Kitchen’s menu."
+  noindex
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Page not found</p>
+    <h1>Let’s find your craving.</h1>
+    <p>This page may have moved. The menu is a good place to start.</p>
+    <a href={url('menu/')} class="button">
+      Explore the menu →
+    </a>
+  </section>
+</Layout>

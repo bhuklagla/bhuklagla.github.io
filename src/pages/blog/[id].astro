@@ -1,0 +1,45 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import FoodImage from '../../components/FoodImage.astro';
+import { canonical, url } from '../../lib/site';
+export async function getStaticPaths() {
+  return (await getCollection('blog')).map((article) => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}
+const { article } = Astro.props;
+const { Content } = await render(article);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.date.toISOString(),
+  author: { '@type': 'Organization', name: 'Bhuk Lagla Kitchen' },
+  ...(canonical(Astro.url.pathname) ? { url: canonical(Astro.url.pathname) } : {}),
+};
+---
+
+<Layout
+  title={`${article.data.title} | Bhuk Lagla Kitchen`}
+  description={article.data.description}
+  image={`/images/menu/${article.data.image}-960.webp`}
+  schema={schema}
+  active="blog"
+>
+  <article class="wrap prose section">
+    <a href={url('blog/')} class="text-link">
+      ← Food talk
+    </a>
+    <p class="eyebrow">{article.data.topic}</p>
+    <h1>{article.data.title}</h1>
+    <p class="article-meta">Bhuk Lagla Kitchen · 9 October 2026</p>
+    <FoodImage id={article.data.image} alt={article.data.title} eager class="article-hero" />
+    <Content />
+    <a href={url('menu/')} class="button">
+      Find your craving →
+    </a>
+  </article>
+</Layout>

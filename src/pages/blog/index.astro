@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import FoodImage from '../../components/FoodImage.astro';
+import { url } from '../../lib/site';
+const articles = (await getCollection('blog')).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Layout
+  title="Food Talk | Bhuk Lagla Kitchen, Sundargarh"
+  description="Read local food guides from Bhuk Lagla Kitchen: choosing pizza or snacks, air-fryer dishes and planning a food enquiry for your Sundargarh gathering."
+  active="blog"
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Food talk</p>
+    <h1>
+      Good food.
+      <br />
+      Everyday questions.
+    </h1>
+    <p>A little menu inspiration and help with your next food break.</p>
+  </section>
+  <section class="wrap section blog-grid">
+    {articles.map((article) => (
+      <article class="blog-card">
+        <a href={url(`blog/${article.id}/`)}>
+          <FoodImage id={article.data.image} alt={article.data.title} />
+          <h2>{article.data.title}</h2>
+        </a>
+        <p>{article.data.description}</p>
+        <time datetime={article.data.date.toISOString()}>9 October 2026</time>
+        <a class="text-link" href={url(`blog/${article.id}/`)}>
+          Read article →
+        </a>
+      </article>
+    ))}
+  </section>
+</Layout>

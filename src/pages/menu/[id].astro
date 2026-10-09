@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FoodImage from '../../components/FoodImage.astro';
+import OrderButton from '../../components/OrderButton.astro';
+import DishCard from '../../components/DishCard.astro';
+import Icon from '../../components/Icon.astro';
+import { menu, categories, relatedItems } from '../../lib/menu';
+import { url } from '../../lib/site';
+export function getStaticPaths() {
+  return menu.map((item) => ({ params: { id: item.id }, props: { item } }));
+}
+const { item } = Astro.props;
+const category = categories.find((cat) => cat.id === item.category)!;
+const related = relatedItems(item);
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'MenuItem',
+  name: item.name,
+  description: item.description,
+  suitableForDiet: 'https://schema.org/VegetarianDiet',
+};
+---
+
+<Layout
+  title={`${item.name} in Sundargarh | Bhuk Lagla Kitchen`}
+  description={`${item.description} Discover ${item.name} at Bhuk Lagla Kitchen in Sundargarh. Check current availability and order on Zomato.`}
+  active="menu"
+  image={`/images/menu/${item.id}-960.webp`}
+  schema={schema}
+>
+  <nav class="wrap breadcrumbs" aria-label="Breadcrumb">
+    <a href={url('menu/')}>Menu</a>
+    <span>/</span>
+    <a href={url(`menu/category/${category.id}/`)}>{category.name}</a>
+    <span>/</span>
+    <span>{item.name}</span>
+  </nav>
+  <section class="wrap dish-detail" data-detail-id={item.id}>
+    <div class="detail-image">
+      <FoodImage id={item.id} alt={item.name} eager sizes="(max-width: 860px) 94vw, 50vw" />
+    </div>
+    <div class="detail-copy">
+      <p class="eyebrow">{category.name} · Sundargarh</p>
+      <h1>{item.name}</h1>
+      <p class="veg-label">
+        <Icon name="leaf" />
+        Pure veg · no egg
+      </p>
+      <p class="detail-description">{item.description}</p>
+      {item.method && <p class="method-tag">{item.method}</p>}
+      <p class="availability">
+        <span class="status-dot"></span>Check availability on Zomato
+      </p>
+      <OrderButton label="Find it on Zomato" />
+      <p class="small-text">
+        Delivery and eligible offers are shown by Zomato. Photos show the dish; presentation may
+        vary.
+      </p>
+      <button type="button" class="text-link" data-share>
+        <Icon name="share" />
+        Share this dish
+      </button>
+    </div>
+  </section>
+  {related.length > 0 && (
+    <section class="wrap section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Keep browsing</p>
+          <h2>More {category.name.toLowerCase()}</h2>
+        </div>
+      </div>
+      <div class="dish-grid related-grid">
+        {related.map((dish) => (
+          <DishCard item={dish} />
+        ))}
+      </div>
+    </section>
+  )}
+</Layout>

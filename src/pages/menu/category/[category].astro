@@ -1,0 +1,28 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import MenuBrowser from '../../../components/MenuBrowser.astro';
+import { categories } from '../../../lib/menu';
+import { url } from '../../../lib/site';
+export function getStaticPaths() {
+  return categories.map((category) => ({ params: { category: category.id }, props: { category } }));
+}
+const { category } = Astro.props;
+---
+
+<Layout
+  title={`${category.name} in Sundargarh | Bhuk Lagla Kitchen`}
+  description={`${category.summary} Browse ${category.name.toLowerCase()} at Bhuk Lagla Kitchen, Sundargarh. Pure veg, no egg. Check availability and order on Zomato.`}
+  active="menu"
+>
+  <section class="wrap page-heading">
+    <a href={url('menu/')} class="text-link">
+      ← All dishes
+    </a>
+    <p class="eyebrow">Bhuk Lagla Kitchen · Sundargarh</p>
+    <h1>{category.name}</h1>
+    <p>{category.summary}</p>
+  </section>
+  <section class="wrap menu-section">
+    <MenuBrowser category={category.id} />
+  </section>
+</Layout>

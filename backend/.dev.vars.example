@@ -1,0 +1,5 @@
+NTFY_SERVER="https://ntfy.sh"
+NTFY_TOPIC="replace-with-your-unlisted-topic"
+ALLOWED_ORIGINS="http://127.0.0.1:4321,http://localhost:4321"
+ADMIN_TOKEN="generate-a-long-random-owner-token"
+RATE_LIMIT_SALT="generate-a-separate-random-value"

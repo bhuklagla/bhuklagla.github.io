@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { business, url } from '../lib/site';
+const key = import.meta.env.PUBLIC_WEB3FORMS_KEY || '';
+---
+
+<Layout
+  title="Contact & Party Enquiries | Bhuk Lagla Kitchen, Sundargarh"
+  description="Contact Bhuk Lagla Kitchen in Sundargarh. Ask about birthday parties, anniversaries and group food enquiries, or email bhuklagla@outlook.com."
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Let’s talk food</p>
+    <h1>
+      A question?
+      <br />A party coming up?
+    </h1>
+    <p>Send us an enquiry. For everyday orders, use Zomato.</p>
+  </section>
+  <section class="wrap contact-grid section">
+    <div>
+      <h2>Bhuk Lagla Kitchen</h2>
+      <p>Sundargarh, Odisha</p>
+      <a class="text-link" href={`mailto:${business.email}`}>
+        {business.email} ↗
+      </a>
+      <p class="contact-note">
+        Birthday, anniversary, college gathering or office get-together? Tell us what you have in
+        mind. We’ll confirm what’s possible by email.
+      </p>
+      <p class="small-text">
+        Please don’t send payment details or sensitive personal information. Enquiries do not
+        reserve a slot or confirm an order.
+      </p>
+    </div>
+    <form
+      id="contact-form"
+      action="https://api.web3forms.com/submit"
+      method="POST"
+      data-contact-form
+    >
+      <input type="hidden" name="access_key" value={key} />
+      <input type="hidden" name="subject" value="Bhuk Lagla Kitchen — website enquiry" />
+      <input type="hidden" name="from_name" value="Bhuk Lagla Kitchen website" />
+      <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" aria-hidden="true" />
+      <label>
+        What’s this about?
+        <select name="enquiry_type" required data-enquiry-type>
+          <option value="general">A general question</option>
+          <option value="party">Party / group food enquiry</option>
+        </select>
+      </label>
+      <div class="form-row">
+        <label>
+          Your name
+          <input name="name" autocomplete="name" maxlength="100" required />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" autocomplete="email" maxlength="254" required />
+        </label>
+      </div>
+      <label>
+        Phone (optional)
+        <input type="tel" name="phone" autocomplete="tel" maxlength="25" />
+      </label>
+      <fieldset data-party-fields>
+        <legend>For a party or gathering</legend>
+        <label>
+          Occasion
+          <select name="occasion">
+            <option value="">Choose an occasion</option>
+            <option>Birthday party</option>
+            <option>Anniversary party</option>
+            <option>College / school gathering</option>
+            <option>Office gathering</option>
+            <option>Farewell party</option>
+            <option>Other celebration</option>
+          </select>
+        </label>
+        <div class="form-row">
+          <label>
+            Event date
+            <input name="event_date" type="date" />
+          </label>
+          <label>
+            Approximate guests
+            <input name="guests" type="number" min="2" max="1000" inputmode="numeric" />
+          </label>
+        </div>
+      </fieldset>
+      <label>
+        Tell us what you need
+        <textarea
+          name="message"
+          rows="5"
+          minlength="10"
+          maxlength="3000"
+          required
+          placeholder="Your question, or food preferences and plans for your event."
+        ></textarea>
+      </label>
+      <label class="checkbox-label">
+        <input type="checkbox" name="consent" value="yes" required />
+        <span>
+          I agree to send these details to Bhuk Lagla Kitchen through Web3Forms so the kitchen can
+          reply. <a href={url('privacy/')}>Privacy details</a>.
+        </span>
+      </label>
+      <button type="submit" class="button" disabled={!key}>
+        Send enquiry →
+      </button>
+      <p role="status" aria-live="polite" data-form-status>
+        {!key
+          ? 'The form is being connected. Please email us for now.'
+          : 'Your details are used to respond to this enquiry.'}
+      </p>
+    </form>
+  </section>
+  <section class="wrap faq section">
+    <p class="eyebrow">Quick answers</p>
+    <h2>Before you ask</h2>
+    <details>
+      <summary>How do I place an order?</summary>
+      <p>Browse here, then use Order on Zomato. Payments and order updates stay on Zomato.</p>
+    </details>
+    <details>
+      <summary>Where are the prices and offers?</summary>
+      <p>Zomato shows current prices and eligible offers for your account.</p>
+    </details>
+    <details>
+      <summary>Is the food vegetarian?</summary>
+      <p>Yes. Our menu is pure veg and egg-free.</p>
+    </details>
+    <details>
+      <summary>Are all dishes air-fried?</summary>
+      <p>
+        Our pizzas and fries use an air fryer. Sandwiches are grilled. Other dishes use their own
+        cooking methods.
+      </p>
+    </details>
+    <details>
+      <summary>Can I enquire about a birthday or anniversary?</summary>
+      <p>
+        Yes. Choose Party / group food enquiry above. We’ll confirm options and availability by
+        email before any arrangements are made.
+      </p>
+    </details>
+  </section>
+</Layout>

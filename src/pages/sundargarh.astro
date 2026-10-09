@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { categories } from '../lib/menu';
+import { url } from '../lib/site';
+import OrderButton from '../components/OrderButton.astro';
+---
+
+<Layout
+  title="Pizza, Sandwiches & Snacks in Sundargarh, Odisha | Bhuk Lagla Kitchen"
+  description="Looking for pure-veg pizza, grilled sandwiches, fries, Maggi or pasta in Sundargarh, Odisha? Browse Bhuk Lagla Kitchen and order through Zomato."
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Made for Sundargarh</p>
+    <h1>
+      Local cravings.
+      <br />A kitchen close to home.
+    </h1>
+    <p>Pizza, sandwiches and snacks for your next food break in Sundargarh, Odisha.</p>
+  </section>
+  <section class="wrap prose section">
+    <h2>Find your next bite</h2>
+    <p>
+      Whether you’re taking a college break, catching up with friends or deciding what to eat at
+      home, our menu helps you browse before ordering. All dishes are pure veg and egg-free.
+    </p>
+    <div class="category-links">
+      {categories.map((cat) => (
+        <a class="button secondary" href={url(`menu/category/${cat.id}/`)}>
+          {cat.name} →
+        </a>
+      ))}
+    </div>
+    <h2>Ordering in Sundargarh</h2>
+    <p>
+      Use our Zomato link to check whether delivery is available for your location. The platform
+      shows the current menu, availability, delivery details and offers eligible for your account.
+      Delivery coverage can vary.
+    </p>
+    <OrderButton />
+    <h2>Planning a gathering?</h2>
+    <p>
+      Send a <a href={url('contact/?type=party')}>party enquiry</a> for a birthday, anniversary or
+      another event. We’ll reply by email; an enquiry does not confirm an order.
+    </p>
+  </section>
+</Layout>

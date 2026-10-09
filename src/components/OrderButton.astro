@@ -1,0 +1,17 @@
+---
+import { business } from '../lib/site';
+import Icon from './Icon.astro';
+const { label = 'Order on Zomato', secondary = false, class: className = '' } = Astro.props;
+---
+
+<a
+  class:list={['button', { secondary }, className]}
+  href={business.zomato}
+  target="_blank"
+  rel="noopener noreferrer"
+  data-zomato
+  aria-label={`${label} (opens Zomato)`}
+>
+  {label}
+  <Icon name="external" />
+</a>

@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { url } from '../lib/site';
+---
+
+<Layout
+  title="You’re offline | Bhuk Lagla Kitchen"
+  description="Reconnect to order on Zomato. Cached dishes may be available to browse."
+  noindex
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">No connection</p>
+    <h1>
+      Keep your craving.
+      <br />
+      Reconnect to order.
+    </h1>
+    <p>
+      You may still browse the cached menu. Photos and availability may be out of date. Zomato
+      ordering needs an internet connection.
+    </p>
+    <a class="button secondary" href={url('menu/')}>
+      Browse cached menu →
+    </a>
+  </section>
+</Layout>
