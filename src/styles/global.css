@@ -202,6 +202,9 @@
     padding-block: 54px 60px;
     align-items: center;
   }
+  .hero-copy {
+    perspective: 900px;
+  }
   .hero-copy h1 {
     font-size: clamp(3.6rem, 5.6vw, 5.4rem);
     letter-spacing: -0.055em;
@@ -258,43 +261,10 @@
     align-items: center;
     justify-content: space-between;
   }
-  .hero-bottom {
-    display: grid;
-    grid-template-columns: 1.65fr 1fr;
-    gap: 8px;
-    align-items: center;
-    margin-top: 15px;
-    min-height: 194px;
-  }
   .hero-mascot {
-    width: 100%;
+    width: min(100%, 360px);
+    margin-top: 18px;
     filter: drop-shadow(0 9px 7px #18212812);
-  }
-  .hero-bites {
-    display: grid;
-    gap: 9px;
-  }
-  .hero-bite {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .hero-bite img {
-    width: 65px;
-    height: 47px;
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .hero-bite strong {
-    font-family: var(--display);
-    font-weight: 550;
-    display: block;
-    font-size: 0.95rem;
-  }
-  .hero-bite small {
-    display: block;
-    font-size: 0.6rem;
-    color: var(--muted);
   }
   .proof-band {
     background: var(--surface);
@@ -1136,22 +1106,8 @@
       width: 100%;
       margin-inline: auto;
     }
-    .hero-bottom {
-      grid-template-columns: 1.65fr 1fr;
-      min-height: 160px;
-    }
     .hero-mascot {
-      min-width: 0;
-    }
-    .hero-bite img {
-      width: 64px;
-      height: 45px;
-    }
-    .hero-bite strong {
-      font-size: 0.85rem;
-    }
-    .hero-bite small {
-      font-size: 0.55rem;
+      width: min(100%, 320px);
     }
     .proof-band .wrap {
       gap: 25px;
@@ -1366,29 +1322,6 @@
     .hero-feature {
       border-radius: 16px;
     }
-    .hero-bottom {
-      grid-template-columns: 1.65fr 1fr;
-      gap: 0;
-      min-height: 138px;
-      margin-top: 10px;
-    }
-    .hero-bites {
-      gap: 8px;
-    }
-    .hero-bite {
-      gap: 6px;
-    }
-    .hero-bite img {
-      width: 45px;
-      height: 35px;
-      border-radius: 6px;
-    }
-    .hero-bite strong {
-      font-size: 0.72rem;
-    }
-    .hero-bite small {
-      font-size: 0.47rem;
-    }
     .photo-caption {
       font-size: 0.7rem;
       padding: 15px;
@@ -1570,13 +1503,6 @@
     }
     .hero-local {
       font-size: 0.6rem;
-    }
-    .hero-bite small {
-      display: none;
-    }
-    .hero-bite img {
-      width: 36px;
-      height: 30px;
     }
     .proof-band .wrap {
       gap: 10px;

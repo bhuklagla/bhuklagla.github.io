@@ -19,6 +19,10 @@ Environment: Windows, Node 24.19.0, Astro static build served at `127.0.0.1:4321
 
 Evidence files are outside the repository in the workspace demo output folder, so the unlisted ntfy URL is not published in GitHub artifacts. Offline/device overrides are reset after browser QA. Lighthouse scores and real-device installation are not claimed from these checks.
 
+## Hero refinement
+
+Milan requested the mascot directly below the food introduction and removal of the three small Maggi/sandwich/fries hero previews. Verified the mascot follows the introduction in the DOM, the hero contains one food photograph and no preview rows, and its visible position is below the introduction at 390px and 320px. Both phone widths and desktop have no horizontal overflow; loaded images resolve. Astro/catalogue checks and the 41-page static build/link validation pass. Screenshots: `hero-refined-desktop.jpg` and `hero-refined-mobile.jpg` in the workspace demo output folder. Device emulation was restored after verification.
+
 ## Launch limitations
 
 No public host/domain or production journey database is configured. Preview noindex is deliberate. Mobile Zomato app/outlet handoff still needs a real device check; the supplied smart link redirects desktop Chrome to Zomato’s mobile app-download page. No order was placed. The partner Smart Link drawer for Bhuk Lagla Kitchen (22951767) confirms the exact supplied link and offers aggregate menu-visit/order reporting. Automated per-website-session paid-order attribution remains unavailable.

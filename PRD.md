@@ -9,7 +9,7 @@ The website introduces a newly opened local kitchen to Sundargarh residents, par
 - Headline: **Big cravings. Small budget.**
 - White, ink and brand-orange Kitchen Studio layout; Outfit headings and Work Sans body text.
 - One complete approved logo (mascot and Bhuk Lagla Kitchen lettering) at the top-left. Mascot face favicon and install icons from the approved kit.
-- Large hero mascot and Paneer Chataka Pizza, with Maggi, sandwich and fries imagery. Use `Zomato/Menu Images v2 - Natural Serving Angle` throughout. Preserve original assets.
+- Large hero mascot directly below the two-line food introduction, before the action buttons. Paneer Chataka Pizza is the hero’s sole food photo; the Maggi/sandwich/fries preview rows are removed. Those categories remain in the menu. Use `Zomato/Menu Images v2 - Natural Serving Angle` throughout. Preserve original assets.
 - Mobile first, responsive through desktop, icon-and-text Home / Menu / More navigation and an obvious Order on Zomato action. No forced installation or animation gates.
 - Controlled GSAP entrances and progressive Three.js matrix-based perspective enhancement on pointer devices; static photos and reduced-motion fallback remain fully useful. No WebGL context or idle rendering loop. Photos are not reconstructed 3D dishes.
 

@@ -5,11 +5,6 @@ import FoodImage from '../components/FoodImage.astro';
 import OrderButton from '../components/OrderButton.astro';
 import { categories } from '../lib/menu';
 import { url } from '../lib/site';
-const bites = [
-  { id: 'classic-masala-maggi', name: 'Maggi', note: 'Comfort in a bowl' },
-  { id: 'corn-cream-grilled-sandwich', name: 'Sandwiches', note: 'Golden grilled bites' },
-  { id: 'peri-peri-fries', name: 'Fries', note: 'A little snack break' },
-];
 ---
 
 <Layout
@@ -17,7 +12,7 @@ const bites = [
   description="Big cravings. Small budget. Discover pure-veg air-fryer pizza, grilled sandwiches, Maggi, pasta and fries at Bhuk Lagla Kitchen, Sundargarh. Order on Zomato."
   active="home"
 >
-  <section class="hero wrap" aria-label="Welcome to Bhuk Lagla Kitchen">
+  <section class="hero wrap" data-hero-depth aria-label="Welcome to Bhuk Lagla Kitchen">
     <div class="hero-copy" data-reveal>
       <p class="eyebrow">Local kitchen. Big cravings.</p>
       <h1>
@@ -29,6 +24,15 @@ const bites = [
         Air-fryer pizzas, grilled sandwiches and snacks.
         <br class="desktop-break" /> Made for Sundargarh cravings.
       </p>
+      <img
+        class="hero-mascot"
+        src={url('brand/mascot.webp')}
+        width="840"
+        height="444"
+        alt="Bhuk Lagla's cheerful mascot holding a sandwich and fries"
+        loading="eager"
+        data-hero-plane
+      />
       <div class="hero-actions">
         <a href={url('menu/')} class="button">
           Explore the menu
@@ -41,11 +45,7 @@ const bites = [
         Your everyday hunger fix. Made in Sundargarh.
       </p>
     </div>
-    <div
-      class="hero-gallery"
-      data-hero-depth
-      aria-label="Paneer pizza, mascot, Maggi, sandwich and fries"
-    >
+    <div class="hero-gallery" aria-label="Paneer Chataka Pizza">
       <a href={url('menu/paneer-chataka-pizza/')} class="hero-feature" data-hero-plane>
         <FoodImage
           id="paneer-chataka-pizza"
@@ -58,28 +58,6 @@ const bites = [
           <Icon name="external" size={17} />
         </span>
       </a>
-      <div class="hero-bottom">
-        <img
-          class="hero-mascot"
-          src={url('brand/mascot.webp')}
-          width="840"
-          height="444"
-          alt="Bhuk Lagla's cheerful mascot holding a sandwich and fries"
-          loading="eager"
-          data-hero-plane
-        />
-        <div class="hero-bites">
-          {bites.map((bite) => (
-            <a href={url(`menu/${bite.id}/`)} class="hero-bite">
-              <FoodImage id={bite.id} alt={bite.name} eager sizes="120px" />
-              <span>
-                <strong>{bite.name}</strong>
-                <small>{bite.note}</small>
-              </span>
-            </a>
-          ))}
-        </div>
-      </div>
     </div>
   </section>
   <div class="proof-band">
