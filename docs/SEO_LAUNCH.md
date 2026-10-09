@@ -1,5 +1,7 @@
 # SEO launch — 9 October 2026
 
+10 October update: the owner requires `https://bhuklagla.github.io/` as the customer address. The current personal-account project site is temporary; the target is not live because signup is blocked on GitHub's Outlook validation. Once the account and repository move are complete, rebuild at the root base and verify root robots, sitemap/canonicals, PWA scope and Search Console on that actual host. Cloudflare's separate free journey service is now deployed; ntfy delivery still needs resolution. See `NOTIFICATIONS_SETUP.md`.
+
 Approved free hosting: GitHub Pages, `https://milanbeherazyx.github.io/bhuklagla.github.io/`. No domain purchase or Cloudflare website is needed. Source and deployment are in this repository. Cloudflare Workers/D1 remain a separate optional notification service; the available CLI account belongs to The Oven Vibe and must not be used for this release. Bhuk Lagla's account setup is pending with the owner.
 
 ## Implemented

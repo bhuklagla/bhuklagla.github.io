@@ -1,5 +1,7 @@
 # Website validation — 9 October 2026
 
+10 October Cloudflare verification: ten backend tests pass, including oversized chunked UTF-8 cancellation before database writes, indexed retention, queued retry after provider failure and concurrent send leases. Migrations 0001–0003 succeeded in staging before production; remote query plans use timestamp/queue indexes. Deployed Worker health returned 200; unrelated origin 403; missing owner token 401; oversized body 413; owner report 200 with stored anonymous setup events. Initial ntfy.sh Worker attempts returned 522; the new separate Render ntfy server received a live Worker milestone, and D1 recorded provider acceptance. No real phone delivery, customer enquiry or completed order is claimed. Free-plan proof and private verification artifacts are in `../outputs/website-demo`; see `NOTIFICATIONS_SETUP.md`. The requested `https://bhuklagla.github.io/` address is not yet live because account signup is blocked.
+
 Environment: Windows, Node 24.19.0, Astro static build served at `127.0.0.1:4321`, local SQLite journey backend at `127.0.0.1:8787`, Chrome browser.
 
 ## Verified

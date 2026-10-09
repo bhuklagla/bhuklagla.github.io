@@ -1,4 +1,5 @@
 import menu from '../src/data/menu.json' with { type: 'json' };
+import { deliverNotification } from './notifications.mjs';
 const dishIds = new Set(menu.map((item) => item.id));
 const categories = new Set(['all', 'pizza', 'sandwiches', 'snacks', 'maggi', 'pasta']);
 const blogs = new Set([
@@ -73,6 +74,59 @@ export async function sha256(value) {
     .map((byte) => byte.toString(16).padStart(2, '0'))
     .join('');
 }
+async function matchesOwnerToken(token, expected) {
+  const encoder = new TextEncoder();
+  const hashes = await Promise.all(
+    [token, expected].map((value) => crypto.subtle.digest('SHA-256', encoder.encode(value))),
+  );
+  if (typeof crypto.subtle.timingSafeEqual === 'function')
+    return crypto.subtle.timingSafeEqual(hashes[0], hashes[1]);
+  // Node's WebCrypto lacks the Workers extension; verification avoids a JS string comparison.
+  const key = await crypto.subtle.importKey(
+    'raw',
+    hashes[1],
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['sign', 'verify'],
+  );
+  const message = encoder.encode('bhuk-lagla-owner-access');
+  const signature = await crypto.subtle.sign('HMAC', key, message);
+  const candidate = await crypto.subtle.importKey(
+    'raw',
+    hashes[0],
+    { name: 'HMAC', hash: 'SHA-256' },
+    false,
+    ['verify'],
+  );
+  return crypto.subtle.verify('HMAC', candidate, signature, message);
+}
+async function readEventBody(request) {
+  if (!request.body) return '';
+  const reader = request.body.getReader();
+  const chunks = [];
+  let length = 0;
+  try {
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+      length += value.byteLength;
+      if (length > 1200) {
+        await reader.cancel();
+        return null;
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+  const bytes = new Uint8Array(length);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
+}
 const json = (body, status = 200, headers = {}) =>
   new Response(JSON.stringify(body), {
     status,
@@ -103,7 +157,7 @@ export async function handleRequest(
     if (!env.DB) return json({ error: 'Service is not configured' }, 503, headers);
     if (route === '/insights' && request.method === 'GET') {
       const token = request.headers.get('Authorization')?.replace(/^Bearer /, '') || '';
-      if (!env.ADMIN_TOKEN || !token || (await sha256(token)) !== (await sha256(env.ADMIN_TOKEN)))
+      if (!env.ADMIN_TOKEN || !token || !(await matchesOwnerToken(token, env.ADMIN_TOKEN)))
         return json({ error: 'Authorisation required' }, 401, headers);
       await env.DB.prepare('DELETE FROM events WHERE created_at < ?')
         .bind(Date.now() - 30 * 86400000)
@@ -114,6 +168,9 @@ export async function handleRequest(
       const events = await env.DB.prepare(
         'SELECT session, type, route, detail, device, created_at FROM events ORDER BY created_at DESC LIMIT 200',
       ).all();
+      const notificationDelivery = await env.DB.prepare(
+        'SELECT COUNT(*) AS total, SUM(delivered_at IS NOT NULL) AS delivered, SUM(delivered_at IS NULL) AS pending FROM notification_outbox',
+      ).first();
       return json(
         {
           metrics: metrics.results,
@@ -121,6 +178,7 @@ export async function handleRequest(
           retentionDays: 30,
           zomatoOrders: 'unknown',
           enquiryVerification: 'browser-reported',
+          notificationDelivery,
         },
         200,
         headers,
@@ -130,8 +188,8 @@ export async function handleRequest(
       return json({ error: 'Not found' }, 404, headers);
     if (!request.headers.get('Content-Type')?.startsWith('application/json'))
       return json({ error: 'Expected JSON' }, 415, headers);
-    const text = await request.text();
-    if (text.length > 1200) return json({ error: 'Event too large' }, 413, headers);
+    const text = await readEventBody(request);
+    if (text === null) return json({ error: 'Event too large' }, 413, headers);
     let event;
     try {
       event = validateEvent(JSON.parse(text));
@@ -188,25 +246,16 @@ export async function handleRequest(
         .reverse()
         .map((row) => `${row.type}: ${row.route}${row.detail ? ` (${row.detail})` : ''}`)
         .join('\n')}\n${explanation}`;
-      ctx.waitUntil(
-        publish(`${(env.NTFY_SERVER || 'https://ntfy.sh').replace(/\/$/, '')}/${env.NTFY_TOPIC}`, {
-          method: 'POST',
-          headers: {
-            Title: title,
-            ...(env.NTFY_TOKEN ? { Authorization: `Bearer ${env.NTFY_TOKEN}` } : {}),
-          },
-          body,
-        })
-          .then(async (response) => {
-            if (!response.ok)
-              console.error('Notification provider returned an error', response.status);
-          })
-          .catch(() => console.error('Notification delivery failed')),
-      );
+      await env.DB.prepare(
+        'INSERT OR IGNORE INTO notification_outbox (id,title,body,created_at,next_attempt_at) VALUES (?,?,?,?,?)',
+      )
+        .bind(event.id, title, body, now, now)
+        .run();
+      ctx.waitUntil(deliverNotification(event.id, env, publish));
     }
     return json({ ok: true, duplicate: !inserted.meta.changes }, 202, headers);
   } catch {
-    console.error('Journey service request failed');
+    console.error(JSON.stringify({ event: 'journey_request_failed' }));
     return json({ error: 'Service unavailable' }, 503, headers);
   }
 }

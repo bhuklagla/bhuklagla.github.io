@@ -1,18 +1,42 @@
 {
   "name": "bhuk-lagla-journeys",
+  "account_id": "d803c0afae21051499a05fc6cc4fe82c",
   "main": "worker.mjs",
   "compatibility_date": "2026-10-09",
-  "triggers": { "crons": ["0 0 * * *"] },
+  "workers_dev": true,
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "head_sampling_rate": 0.1, "invocation_logs": false },
+    "traces": { "enabled": true, "head_sampling_rate": 0.01 },
+  },
+  "triggers": { "crons": ["*/5 * * * *"] },
   "vars": {
-    "ALLOWED_ORIGINS": "https://your-approved-domain.example",
-    "NTFY_SERVER": "https://ntfy.sh",
+    "ALLOWED_ORIGINS": "https://milanbeherazyx.github.io,https://bhuklagla.github.io",
+    "NTFY_SERVER": "https://bhuk-lagla-notifications.onrender.com",
   },
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "bhuk-lagla-journeys",
-      "database_id": "REPLACE_WITH_CREATED_D1_DATABASE_ID",
+      "database_id": "aa24d297-1b88-4e3b-8b24-52b20500927f",
       "migrations_dir": "migrations",
     },
   ],
+  "env": {
+    "staging": {
+      "name": "bhuk-lagla-journeys-staging",
+      "vars": {
+        "ALLOWED_ORIGINS": "https://milanbeherazyx.github.io",
+        "NTFY_SERVER": "https://ntfy.sh",
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "bhuk-lagla-journeys-staging",
+          "database_id": "17bcced6-0230-478c-92ae-a07c3cb811fc",
+          "migrations_dir": "migrations",
+        },
+      ],
+    },
+  },
 }

@@ -96,7 +96,10 @@ import Layout from '../layouts/Layout.astro';
           journeys.append(row);
         }
         status.textContent =
-          'Latest 200 events. Completed Zomato orders: unknown. Enquiries: browser-reported Web3Forms success.';
+          'Latest 200 events. Completed Zomato orders: unknown. Enquiries: browser-reported Web3Forms success.' +
+          (data.notificationDelivery
+            ? ` Alerts in the last 24 hours: ${data.notificationDelivery.delivered || 0} accepted by the notification server; ${data.notificationDelivery.pending || 0} awaiting delivery. Phone receipt is not confirmed by server acceptance.`
+            : '');
       } catch {
         status.textContent = 'Unable to load. Check your owner token and service connection.';
       }

@@ -1,5 +1,7 @@
 # Bhuk Lagla website
 
+10 October 2026: Cloudflare setup is verified for Bhuk Lagla's own free account and the Worker/D1 is deployed. See `docs/NOTIFICATIONS_SETUP.md` for profiles, resources, official skills/MCP and the ntfy delivery issue. Milan explicitly requires `https://bhuklagla.github.io/`, using a separate user account like The Oven Vibe. That signup is blocked on GitHub's rejection of the Outlook email; the existing personal-account project URL is only the current host. Do not claim the short URL is live. The request to install official Cloudflare skills authorised that global installation only; other global skills, memory and Oven Vibe changes remain outside this project.
+
 Launch update, 9 October 2026: Milan requested advanced SEO and deployment, has no domain, and selected GitHub hosting. The approved target is `https://milanbeherazyx.github.io/bhuklagla.github.io/`; always preserve the project base path. A separate Bhuk Lagla Cloudflare account for the notification backend remains pending; do not use the available Oven Vibe login. This supersedes the earlier hosting-pending statement below. Keep Sundargarh + email publication until additional business facts are explicitly approved. See `docs/SEO_LAUNCH.md` and the latest release evidence.
 
 Read `docs/WEBSITE_BRIEF.md` and `skills/README.md` before working here.
