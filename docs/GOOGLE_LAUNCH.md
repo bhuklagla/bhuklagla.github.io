@@ -24,6 +24,8 @@ Status: profile created under the kitchen account; customization reached 100%. T
 
 The owner uploaded the approved square mascot-and-name logo after Chrome blocked agent local-file uploads; the Photos panel now shows a saved Logo and Change logo control. Exterior, menu-card and dish photography were left for genuine current business photos. Ads and Workspace upsells were skipped; no paid plan was started. Phone and SMS chat were already present when the owner advanced onboarding; the agent did not add them during customization.
 
+The Google food-ordering provider link editor was also tried with the approved Zomato smart link. Google displayed `An error occurred` and did not save the link. The ordering-link editor says verification is needed before customers can see preferred ordering links. Retry after profile verification; until then the website/menu links remain the known paths.
+
 ## Official guidance
 
 - [Google account with an existing email](https://support.google.com/accounts/answer/27441?hl=en)
