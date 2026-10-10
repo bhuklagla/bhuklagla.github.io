@@ -14,7 +14,11 @@ Web3Forms' recorded Website URL is `https://bhuklagla.github.io/contact/`, saved
 
 Private evidence stays outside Git under `../outputs/website-demo`: `verify-root-live-seo.py`, `root-journey-verification.json`, `bhuklagla-root-live-desktop.jpg`, `bhuklagla-root-live-mobile.jpg`, `web3forms-root-address-saved.jpg`, `ntfy-laptop-rechecked.jpg`. Keep the ntfy tab open for laptop alerts. See `NOTIFICATIONS_SETUP.md` for resources, secrets boundaries and free-hosting limitations.
 
-## Earlier project-host release
+## Google registration follow-up — 10 October 2026
+
+PR #4 deployed Google's exact ownership file at the root: commit `19a43f575987977af6d7332972fc3f0dfbd94c8a`, successful [Pages run 37991530729](https://github.com/bhuklagla/bhuklagla.github.io/actions/runs/37991530729) and [main checks 37991530767](https://github.com/bhuklagla/bhuklagla.github.io/actions/runs/37991530767). Positive build validation and a malformed-dist-artifact rejection passed. Search Console confirms verified ownership; three indexing requests were accepted. Sitemap processing remains Couldn't fetch. Business Profile details and owner-uploaded logo are saved; no public Maps listing is claimed. The owner says separate permanent signage is not installed. See `GOOGLE_LAUNCH.md` for the precise states and remaining physical verification.
+
+## Earlier project-host release details
 
 Release commit: `40a278b825a1b104a94b2badf5bd8dd337a1649e` on `main`, merged through [PR #1](https://github.com/milanbeherazyx/bhuklagla.github.io/pull/1). Review commit: `1a55e15887f0f7323c1dab3362d1aba18e33dbd4`.
 
@@ -32,7 +36,7 @@ Release commit: `40a278b825a1b104a94b2badf5bd8dd337a1649e` on `main`, merged thr
 
 The historical Cloudflare-account blocker is resolved: Bhuk Lagla's separate Free account, production/staging D1, Worker and Render ntfy service are deployed. No Oven Vibe infrastructure was changed. PR #2, commit `da0d695403412e1ed4c4c0cf649c9da1993d0612`, first enabled checked Pages measurement; deployment `37987370986` succeeded before the repository transfer.
 
-Google Search Console verification and sitemap submission need the owner's Google account and actual verification file/tag. Additional public street address/hours/phone and Bhuk Lagla's Google Business Profile link are pending; the site keeps Sundargarh + email. Rankings, virality and completed Zomato orders are not guaranteed or invented. See [SEO launch](SEO_LAUNCH.md).
+Google Search Console ownership verification and sitemap submissions are complete, with sitemap fetch errors still unresolved; three indexing requests were accepted. Business Profile is saved but not verified or publicly visible because the separate permanent signage is not installed. Website publication still keeps Sundargarh + email. Rankings, virality and completed Zomato orders are not guaranteed or invented. See [SEO launch](SEO_LAUNCH.md).
 
 Local production-target preview now uses `http://127.0.0.1:4321/`. For local journey QA, select the local backend and its ignored configuration; production does not allow localhost origins. Historical pre-launch evidence is retained in Git history and `BUILD_HANDOFF.md`.
 

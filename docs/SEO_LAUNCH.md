@@ -4,7 +4,7 @@
 
 Approved free hosting: GitHub Pages at **https://bhuklagla.github.io/**, owned by the free `bhuklagla` organization. Root pages, canonicals, robots, sitemaps and PWA assets were checked live. Bhuk Lagla's separate Free Cloudflare Worker/D1 and Render notification service are deployed; opted-in anonymous journeys and laptop feed delivery are verified. No domain purchase or paid advertising was added. See `RELEASE.md` and `NOTIFICATIONS_SETUP.md`.
 
-Google registration is authorised by Milan. The owner completed standard free Google signup using the kitchen's Outlook email; that account is signed into Search Console. Google's actual downloaded HTML ownership file is being deployed for the exact root URL-prefix property. Search Console and Business Profile registration must not be reported as completed until their actual Google verification states are recorded. See `GOOGLE_LAUNCH.md`.
+Google registration is authorised by Milan. Search Console ownership is verified under the kitchen's Outlook Google account; the exact verification file is deployed and must remain. Home, menu and festival hub indexing requests were accepted. Both submitted sitemaps currently show Couldn't fetch despite valid live HTTP 200 XML and a passing homepage Google live test; processing/indexing is not confirmed. Business Profile customization is saved, but it is not publicly visible and awaits permanent separate signage and verification. See `GOOGLE_LAUNCH.md`.
 
 ## Implemented
 
