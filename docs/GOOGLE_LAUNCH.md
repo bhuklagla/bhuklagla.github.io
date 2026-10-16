@@ -1,5 +1,11 @@
 # Google launch — 10 October 2026
 
+## 16 October brand-name update
+
+Milan authorised restoring the customer name to **Bhuk Lagla**. In the existing profile managed by `bhuklagla@outlook.com`, the Business name and the brand reference within Description were saved and visibly verified as Bhuk Lagla. Website and menu links already point to the correct root host and remain unchanged. The management dashboard still says **Not publicly visible** and **Get verified**; this rename does not complete business verification. The separate Google Account display-name edit requires an owner passkey check. Its completion state and private screenshots are tracked in `D:/Bhuk Lagla/outputs/2026-10-16-brand-rename/BRAND_RENAME_HANDOFF.md`.
+
+The registration details below are historical records of the original setup.
+
 Milan authorised free Google registration for the live customer website and Bhuk Lagla Kitchen. The owner created a Google account using `bhuklagla@outlook.com`, entered the new password, completed phone verification and accepted Google's terms himself. Existing Google/Oven Vibe properties were not changed. No Workspace or advertising plan was purchased.
 
 ## Search Console
