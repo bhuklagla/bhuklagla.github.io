@@ -10,15 +10,15 @@ const { category } = Astro.props;
 ---
 
 <Layout
-  title={`${category.name} in Sundargarh | Bhuk Lagla Kitchen`}
-  description={`${category.summary} Browse ${category.name.toLowerCase()} at Bhuk Lagla Kitchen, Sundargarh. Pure veg, no egg. Check availability and order on Zomato.`}
+  title={`${category.name} in Sundargarh | Bhuk Lagla`}
+  description={`${category.summary} Browse ${category.name.toLowerCase()} at Bhuk Lagla, Sundargarh. Pure veg, no egg. Check availability and order on Zomato.`}
   active="menu"
 >
   <section class="wrap page-heading">
     <a href={url('menu/')} class="text-link">
       ← All dishes
     </a>
-    <p class="eyebrow">Bhuk Lagla Kitchen · Sundargarh</p>
+    <p class="eyebrow">Bhuk Lagla · Sundargarh</p>
     <h1>{category.name}</h1>
     <p>{category.summary}</p>
   </section>

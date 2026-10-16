@@ -19,10 +19,10 @@ const schema = {
   headline: article.data.title,
   description: article.data.description,
   datePublished: article.data.date.toISOString(),
-  author: { '@type': 'Organization', name: 'Bhuk Lagla Kitchen' },
+  author: { '@type': 'Organization', name: 'Bhuk Lagla' },
   publisher: {
     '@type': 'Organization',
-    name: 'Bhuk Lagla Kitchen',
+    name: 'Bhuk Lagla',
     logo: { '@type': 'ImageObject', url: absolute('brand/logo.webp') },
   },
   image: absolute(`images/menu/${article.data.image}-960.webp`),
@@ -34,7 +34,7 @@ const schema = {
 ---
 
 <Layout
-  title={`${article.data.title} | Bhuk Lagla Kitchen`}
+  title={`${article.data.title} | Bhuk Lagla`}
   description={article.data.description}
   image={`/images/menu/${article.data.image}-960.webp`}
   schema={schema}
@@ -48,7 +48,7 @@ const schema = {
     <p class="eyebrow">{article.data.topic}</p>
     <h1>{article.data.title}</h1>
     <p class="article-meta">
-      Bhuk Lagla Kitchen ·{' '}
+      Bhuk Lagla ·{' '}
       <time datetime={article.data.date.toISOString()}>{displayDate(article.data.date)}</time>
     </p>
     <FoodImage

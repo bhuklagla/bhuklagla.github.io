@@ -117,5 +117,16 @@
       "source": "Zomato/Menu Images v2 - Natural Serving Angle/Sides & Snacks/Peri Peri Fries.png",
       "sha256": "25dfb6a79c62332f365c31eb570ca23071f5e718b03254474593a4011a40ef40"
     }
-  ]
+  ],
+  "brand": {
+    "name": "Bhuk Lagla",
+    "logo": {
+      "source": "bhuk-lagla-brand-kit/exports/logos/transparent-light/bhuk-lagla_logo_transparent-light_1200w_v1.png",
+      "sha256": "89d9670a63858c1322095d073adba02ff1b9bcf7a58a10cfa70c4101ecde4b88",
+      "output": "public/brand/logo.webp",
+      "width": 420,
+      "height": 288,
+      "notes": "Original approved mascot and BHUK LAGLA lettering, no Kitchen text. Original source unchanged; web format/size derivative only."
+    }
+  }
 }

@@ -2,7 +2,7 @@
 
 Discuss one topic at a time. Record each decision in `WEBSITE_BRIEF.md`, with any unresolved detail explicitly marked. The user controls the pace; this checklist is not permission to implement.
 
-The primary customer journey is already confirmed: browse the menu and order on Zomato. The working website name is Bhuk Lagla Kitchen, using the user's wording. The brand spelling is Bhuk Lagla.
+The primary customer journey is already confirmed: browse the menu and order on Zomato. The working website name is Bhuk Lagla, using the user's wording. The brand spelling is Bhuk Lagla.
 
 ## Topics in order
 

@@ -1,12 +1,12 @@
 ---
 title: Pizza, a sandwich or a snack?
-description: A simple guide to choosing your next food break at Bhuk Lagla Kitchen in Sundargarh, from paneer pizza to a grilled sandwich or fries.
+description: A simple guide to choosing your next food break at Bhuk Lagla in Sundargarh, from paneer pizza to a grilled sandwich or fries.
 date: 2026-10-09
 image: paneer-chataka-pizza
 topic: Follow your craving
 ---
 
-Sometimes the hardest part of a food break is deciding what sounds good. At Bhuk Lagla Kitchen in Sundargarh, you can browse the food before opening Zomato. Here are a few places to start.
+Sometimes the hardest part of a food break is deciding what sounds good. At Bhuk Lagla in Sundargarh, you can browse the food before opening Zomato. Here are a few places to start.
 
 ## In a pizza mood?
 

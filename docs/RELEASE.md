@@ -2,7 +2,13 @@
 
 The exact requested customer address **https://bhuklagla.github.io/** is live and was verified publicly at approximately 02:08 IST on 10 October. Milan approved the free `bhuklagla` organization under his existing account and its Customer Agreement. The repository was transferred with history intact; GitHub confirms Free plan, active owner admin, public repository and HTTPS enforced.
 
-Website: [Bhuk Lagla Kitchen](https://bhuklagla.github.io/). Repository: [bhuklagla/bhuklagla.github.io](https://github.com/bhuklagla/bhuklagla.github.io).
+Website: [Bhuk Lagla](https://bhuklagla.github.io/). Repository: [bhuklagla/bhuklagla.github.io](https://github.com/bhuklagla/bhuklagla.github.io).
+
+## 16 October brand-name restoration
+
+Owner authorised updating the live website to **Bhuk Lagla**, including the original approved logo without Kitchen. The release updates all public page/content names, shared business/schema name, RSS, enquiry labels and manifest, and uses a new service-worker cache version. Original asset sources and image proportions are preserved; the website logo is a 420×288 WebP derivative of the original approved transparent light-surface logo. `scripts/prepare-assets.mjs` uses the original brand kit so future preparation cannot restore the retired wordmark.
+
+Release verification and the separate Google Business Profile rename checkpoint are recorded outside public Git in `D:/Bhuk Lagla/outputs/2026-10-16-brand-rename/BRAND_RENAME_HANDOFF.md`. Google profile edits do not establish public visibility or business verification. Historical launch records below retain the names and labels observed at the time.
 
 Root release: commit `4db7d874e378b40bce472b2434dd892f0c4956ed`, [PR #3](https://github.com/bhuklagla/bhuklagla.github.io/pull/3). [Pages deployment 37987961616](https://github.com/bhuklagla/bhuklagla.github.io/actions/runs/37987961616) and [main checks 37987962046](https://github.com/bhuklagla/bhuklagla.github.io/actions/runs/37987962046) succeeded. Source checks passed before merge. Builds repeat formatting, Astro/catalogue validation, ten backend tests and static artifact/SEO checks.
 

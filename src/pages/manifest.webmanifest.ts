@@ -4,7 +4,7 @@ export const GET: APIRoute = () =>
   new Response(
     JSON.stringify({
       id: url(''),
-      name: 'Bhuk Lagla Kitchen',
+      name: 'Bhuk Lagla',
       short_name: 'Bhuk Lagla',
       description: 'Your local hunger fix in Sundargarh. Browse here, order on Zomato.',
       start_url: url(''),

@@ -9,7 +9,7 @@ const catalogue = JSON.parse(
   fs.readFileSync(path.join(workspace, 'outputs/2026-10-07-menu-images-v2/menu.json'), 'utf8'),
 );
 const photoRoot = path.join(workspace, 'Zomato/Menu Images v2 - Natural Serving Angle');
-const brandRoot = path.join(workspace, 'Bhuk-Lagla-Kitchen/approved-a-v1');
+const brandRoot = path.join(workspace, 'bhuk-lagla-brand-kit/exports');
 const slug = (name) =>
   name
     .toLowerCase()
@@ -82,25 +82,25 @@ for (const row of catalogue) {
   });
 }
 for (const [file, output, width] of [
-  ['logos/transparent-light/bhuk-lagla-kitchen_light_600w.png', 'logo.webp', 420],
-  ['logos/mascot-only/bhuk-lagla-kitchen_logo_mascot-only_1200w_v1.png', 'mascot.webp', 840],
+  ['logos/transparent-light/bhuk-lagla_logo_transparent-light_1200w_v1.png', 'logo.webp', 420],
+  ['logos/mascot-only/bhuk-lagla_logo_mascot-only_1200w_v1.png', 'mascot.webp', 840],
 ])
   await sharp(path.join(brandRoot, file))
     .resize({ width, withoutEnlargement: true })
     .webp({ quality: 94 })
     .toFile(path.join(repo, 'public/brand', output));
 fs.copyFileSync(
-  path.join(brandRoot, 'icons/favicon/bhuk-lagla-kitchen_favicon_v1.ico'),
+  path.join(brandRoot, 'icons/favicon/bhuk-lagla_favicon_v1.ico'),
   path.join(repo, 'public/favicon.ico'),
 );
 for (const size of [32, 64])
   fs.copyFileSync(
-    path.join(brandRoot, `icons/favicon/bhuk-lagla-kitchen_favicon_${size}x${size}_v1.png`),
+    path.join(brandRoot, `icons/favicon/bhuk-lagla_favicon_${size}x${size}_v1.png`),
     path.join(repo, `public/icons/favicon-${size}.png`),
   );
 for (const size of [180, 192, 512])
   fs.copyFileSync(
-    path.join(brandRoot, `icons/bhuk-lagla-kitchen_face-charcoal_${size}x${size}_v1.png`),
+    path.join(brandRoot, `icons/bhuk-lagla_face-charcoal_${size}x${size}_v1.png`),
     path.join(repo, `public/icons/icon-${size}.png`),
   );
 fs.writeFileSync(path.join(repo, 'src/data/menu.json'), JSON.stringify(items, null, 2) + '\n');
@@ -110,6 +110,24 @@ fs.writeFileSync(
     {
       originalsPreserved: true,
       photoCollection: 'Menu Images v2 - Natural Serving Angle',
+      brand: {
+        name: 'Bhuk Lagla',
+        logo: {
+          source:
+            'bhuk-lagla-brand-kit/exports/logos/transparent-light/bhuk-lagla_logo_transparent-light_1200w_v1.png',
+          sha256: hash(
+            path.join(
+              brandRoot,
+              'logos/transparent-light/bhuk-lagla_logo_transparent-light_1200w_v1.png',
+            ),
+          ),
+          output: 'public/brand/logo.webp',
+          width: 420,
+          height: 288,
+          notes:
+            'Original approved mascot and BHUK LAGLA lettering, no Kitchen text. Original source unchanged; web format/size derivative only.',
+        },
+      },
       items: manifest,
     },
     null,

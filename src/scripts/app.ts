@@ -182,9 +182,7 @@ if (form) {
     message.textContent = 'Sending your enquiry…';
     const payload = Object.fromEntries(new FormData(form));
     payload.subject =
-      enquiryType === 'party'
-        ? 'Bhuk Lagla Kitchen — party enquiry'
-        : 'Bhuk Lagla Kitchen — general enquiry';
+      enquiryType === 'party' ? 'Bhuk Lagla — party enquiry' : 'Bhuk Lagla — general enquiry';
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',

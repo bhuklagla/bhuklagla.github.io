@@ -1,5 +1,5 @@
 export const business = {
-  name: 'Bhuk Lagla Kitchen',
+  name: 'Bhuk Lagla',
   city: 'Sundargarh',
   region: 'Odisha',
   email: 'bhuklagla@outlook.com',
