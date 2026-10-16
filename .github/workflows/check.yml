@@ -25,6 +25,7 @@ jobs:
           PUBLIC_BASE_PATH: ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}/', github.event.repository.name) }}
           PUBLIC_WEB3FORMS_KEY: '30e2a51f-6b1d-4a32-a06b-83723a66b242'
           PUBLIC_JOURNEY_API: ${{ vars.PUBLIC_JOURNEY_API }}
+          PUBLIC_UMAMI_WEBSITE_ID: ${{ vars.PUBLIC_UMAMI_WEBSITE_ID }}
       - uses: actions/upload-artifact@v7.0.2
         with:
           name: bhuk-lagla-website

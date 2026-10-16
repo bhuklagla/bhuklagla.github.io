@@ -1,10 +1,12 @@
+import { setAnalyticsConsent, trackAnalytics, umamiEnabled } from './umami';
 const endpoint = import.meta.env.PUBLIC_JOURNEY_API || '';
-const preferenceKey = 'bhuk-lagla-measurement';
+const preferenceKey = 'bhuk-lagla-measurement-v2';
 let consent = false;
 let session = '';
 const route = () =>
   location.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/';
 export function track(type: string, detail?: string) {
+  trackAnalytics(type);
   if (!endpoint || !consent || !session || !navigator.onLine) return;
   const body = JSON.stringify({
     id: crypto.randomUUID(),
@@ -23,6 +25,7 @@ export function track(type: string, detail?: string) {
   }).catch(() => {});
 }
 function start() {
+  setAnalyticsConsent(true);
   try {
     session = sessionStorage.getItem('bhuk-lagla-session') || crypto.randomUUID();
     sessionStorage.setItem('bhuk-lagla-session', session);
@@ -41,7 +44,8 @@ function start() {
   }
 }
 export function setupJourney() {
-  if (!endpoint) return;
+  if (!endpoint && !umamiEnabled) return;
+  if (/\/(?:insights|offline)(?:\/|$)|\/404\.html$/.test(location.pathname)) return;
   let stored: string | null = null;
   try {
     stored = localStorage.getItem(preferenceKey);
@@ -49,7 +53,7 @@ export function setupJourney() {
   const panel = document.createElement('aside');
   panel.className = 'consent-panel';
   panel.setAttribute('aria-label', 'Optional website measurement');
-  panel.innerHTML = `<h2>Help us improve?</h2><p>Allow anonymous browsing, contact and Zomato click counts? No contact details or typed searches are recorded.</p><div class="consent-actions"><button class="button secondary" data-decline>No thanks</button><button class="button" data-allow>Allow</button></div><a class="text-link" href="${import.meta.env.BASE_URL}privacy/">Privacy details</a>`;
+  panel.innerHTML = `<h2>Help us improve?</h2><p>Allow anonymous traffic and action counts through Umami and our journey service? No form contents or typed searches are recorded.</p><div class="consent-actions"><button class="button secondary" data-decline>No thanks</button><button class="button" data-allow>Allow</button></div><a class="text-link" href="${import.meta.env.BASE_URL}privacy/">Privacy details</a>`;
   const choose = (allow: boolean) => {
     try {
       localStorage.setItem(preferenceKey, allow ? 'allow' : 'decline');
@@ -58,6 +62,7 @@ export function setupJourney() {
     consent = allow;
     if (allow) start();
     else {
+      setAnalyticsConsent(false);
       session = '';
       try {
         sessionStorage.removeItem('bhuk-lagla-session');
