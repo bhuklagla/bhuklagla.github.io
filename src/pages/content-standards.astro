@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { business, url } from '../lib/site';
+---
+
+<Layout
+  title="Our Menu Information, Images & Corrections | Bhuk Lagla"
+  description="Who publishes Bhuk Lagla's menu guides, where dish information comes from, how AI-generated images are used, and how to request a correction."
+>
+  <section class="wrap prose section">
+    <p class="eyebrow">About what you read here</p>
+    <h1>
+      Clear food information.
+      <br />
+      Honest context.
+    </h1>
+    <p>
+      Bhuk Lagla publishes this website for people choosing vegetarian food in Sundargarh, Odisha.
+      Our menu pages and guides help you compare dishes before opening Zomato or contacting the
+      kitchen.
+    </p>
+    <p class="small-text">
+      Published by Bhuk Lagla · Updated <time datetime="2026-10-17">17 October 2026</time>
+    </p>
+    <h2 id="sources">Where the information comes from</h2>
+    <p>
+      Dish names, selected ingredients and cooking-method descriptions come from the kitchen’s menu
+      records and confirmed business information. The <a href={url('menu/')}>menu catalogue</a> is
+      the source for our website comparisons and dish counts. It is not a live feed of platform
+      availability.
+    </p>
+    <p>
+      For current prices, portion choices, charges, delivery serviceability and offers, check Zomato
+      for your location and account. Search snippets and AI answers may contain older information.
+      An ingredient description is not a complete allergen declaration.
+    </p>
+    <h2 id="authorship">Who publishes the guides?</h2>
+    <p>
+      Articles are published under the Bhuk Lagla name and linked to{' '}
+      <a href={url('about/')}>Our kitchen</a>. We use AI-assisted drafting and website tools to
+      organise menu information into readable guides. A business byline identifies the publisher; it
+      does not imply independent testing or a chef’s professional qualification.
+    </p>
+    <p>
+      Comparisons explain differences in the named dishes. They do not claim a taste test, a
+      customer survey, a nutrition study or a sales ranking. Event examples are planning examples
+      unless a page explicitly describes a documented event. Where a guide uses an outside calendar
+      or event source, it links to that source and identifies the relevant year.
+    </p>
+    <h2 id="images">About the food images</h2>
+    <p>
+      The current food images are <strong>AI-generated menu illustrations</strong> based on the dish
+      descriptions. They are not camera photographs of individual orders or proof of portion size,
+      preparation conditions or the exact appearance of a delivered dish. Actual presentation can
+      vary. The mascot is brand artwork.
+    </p>
+    <h2 id="updates">Dates and updates</h2>
+    <p>
+      Article publication dates record when the guide was first published. An updated date is shown
+      when the content is substantially revised. A dated festival guide describes that season; it is
+      not a current-year event announcement. An edit date does not certify live stock or opening
+      status.
+    </p>
+    <h2 id="corrections">Ask a question or request a correction</h2>
+    <p>
+      Email <a href={`mailto:${business.email}`}>{business.email}</a> or use the{' '}
+      <a href={url('contact/?type=general')}>general enquiry form</a>. Include the page link and the
+      detail that needs checking. For an existing Zomato order, use the help options within that
+      order for platform payments, delivery and order status.
+    </p>
+    <p>
+      For ingredients or a dietary restriction,{' '}
+      <a href={url('answers/#allergies')}>ask the kitchen before ordering</a>. A vegetarian or
+      egg-free label does not establish suitability for every allergy or diet.
+    </p>
+    <a class="button secondary" href={url('answers/')}>
+      Read the food and ordering answers →
+    </a>
+  </section>
+</Layout>

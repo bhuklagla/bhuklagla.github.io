@@ -3,6 +3,8 @@ import Layout from '../../../layouts/Layout.astro';
 import MenuBrowser from '../../../components/MenuBrowser.astro';
 import { categories } from '../../../lib/menu';
 import { url } from '../../../lib/site';
+import { menuSchema } from '../../../lib/seo';
+import { guidance } from '../../../data/menu-guidance';
 export function getStaticPaths() {
   return categories.map((category) => ({ params: { category: category.id }, props: { category } }));
 }
@@ -13,6 +15,7 @@ const { category } = Astro.props;
   title={`${category.name} in Sundargarh | Bhuk Lagla`}
   description={`${category.summary} Browse ${category.name.toLowerCase()} at Bhuk Lagla, Sundargarh. Pure veg, no egg. Check availability and order on Zomato.`}
   active="menu"
+  schema={menuSchema(category.id)}
 >
   <section class="wrap page-heading">
     <a href={url('menu/')} class="text-link">
@@ -21,8 +24,21 @@ const { category } = Astro.props;
     <p class="eyebrow">Bhuk Lagla · Sundargarh</p>
     <h1>{category.name}</h1>
     <p>{category.summary}</p>
+    <p class="small-text">
+      Food images are AI-generated menu illustrations. Check current availability on Zomato.
+    </p>
   </section>
   <section class="wrap menu-section">
     <MenuBrowser category={category.id} />
+  </section>
+  <section class="wrap prose section">
+    <h2>{guidance[category.id as keyof typeof guidance].question}</h2>
+    <p>{guidance[category.id as keyof typeof guidance].answer}</p>
+    <a class="button secondary" href={url(`choose/#${category.id}`)}>
+      Compare the dishes →
+    </a>
+    <p>
+      <a href={url('answers/')}>Read answers about ingredients and ordering</a>.
+    </p>
   </section>
 </Layout>

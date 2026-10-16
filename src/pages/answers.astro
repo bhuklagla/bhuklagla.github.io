@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OrderButton from '../components/OrderButton.astro';
+import { answerGroups } from '../data/answers';
+import { url } from '../lib/site';
+---
+
+<Layout
+  title="Bhuk Lagla FAQs | Food, Ordering & Party Questions"
+  description="Clear answers about Bhuk Lagla in Sundargarh: vegetarian food, pizza size, pasta choices, Zomato orders, delivery checks and party enquiries."
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Before your next bite</p>
+    <h1>
+      Your questions.
+      <br />
+      Straight answers.
+    </h1>
+    <p>Food, ordering and gathering questions about Bhuk Lagla in Sundargarh, Odisha.</p>
+    <p class="small-text">
+      Published by Bhuk Lagla · Updated <time datetime="2026-10-17">17 October 2026</time>
+    </p>
+    <nav class="category-links" aria-label="Answer topics">
+      {answerGroups.map((group) => (
+        <a class="button secondary" href={`#${group.id}`}>
+          {group.title}
+        </a>
+      ))}
+    </nav>
+  </section>
+  {answerGroups.map((group) => (
+    <section class="wrap answer-section section" id={group.id}>
+      <h2>{group.title}</h2>
+      {group.answers.map((answer) => (
+        <article class="answer-card" id={answer.id}>
+          <h3>{answer.question}</h3>
+          <p>{answer.answer}</p>
+          <a class="text-link" href={url(answer.path)}>
+            {answer.label} →
+          </a>
+        </article>
+      ))}
+    </section>
+  ))}
+  <section class="wrap note-panel">
+    <div>
+      <h2>Ready to choose?</h2>
+      <p>Read the dish description here, then confirm your order on Zomato.</p>
+    </div>
+    <OrderButton />
+  </section>
+</Layout>

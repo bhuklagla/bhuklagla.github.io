@@ -27,7 +27,7 @@ const articleCount = readdirSync('src/content/blog').filter((name) => name.endsW
 const menuCount = JSON.parse(readFileSync('src/data/menu.json', 'utf8')).filter(
   (item) => item.visible,
 ).length;
-const expectedPages = 16 + menuCount + articleCount;
+const expectedPages = 19 + menuCount + articleCount;
 assert.equal(
   html.length,
   expectedPages,
@@ -49,6 +49,14 @@ const resolveLink = (href, file) => {
     existsSync(local) || existsSync(path.join(local, 'index.html')),
     `${path.relative(root, file)} → missing ${href}`,
   );
+  if (address.hash.length > 1) {
+    const target = statSync(local).isDirectory() ? path.join(local, 'index.html') : local;
+    const id = decodeURIComponent(address.hash.slice(1));
+    assert.ok(
+      readFileSync(target, 'utf8').includes(`id="${id}"`),
+      `Missing linked heading ${href} in ${file}`,
+    );
+  }
 };
 for (const file of html) {
   const content = readFileSync(file, 'utf8');
@@ -57,15 +65,78 @@ for (const file of html) {
     /₹|\b(?:current_price|stock_recipe|NTFY_TOPIC|ADMIN_TOKEN|RATE_LIMIT_SALT)\b/,
   );
   assert.doesNotMatch(content, /bhuk-lagla-kitchen-[0-9a-f]{32}/);
+  assert.doesNotMatch(content, /Bhuk\s+Lagla\s+Kitchen|Bhul\s+Lagla\s+Kitchen/i);
   for (const match of content.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const link = match[1];
-    if (/^(?:https?:|mailto:|#|data:)/.test(link)) continue;
+    if (/^(?:https?:|mailto:|data:)/.test(link)) continue;
     resolveLink(link, file);
   }
+  const schemas = [];
   for (const match of content.matchAll(
     /<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,
   ))
-    JSON.parse(match[1]);
+    schemas.push(JSON.parse(match[1]));
+  const graph = schemas.flatMap((schema) => schema['@graph'] || [schema]);
+  for (const node of graph) {
+    assert.notEqual(node['@type'], 'FAQPage', 'No retired Google FAQ rich-result claim');
+    if (node.dateModified) {
+      assert.ok(
+        node.datePublished && new Date(node.dateModified) >= new Date(node.datePublished),
+        `Honest article chronology: ${file}`,
+      );
+      // A date-only edit stamp is a calendar day in the kitchen's publishing timezone.
+      const today = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }).format(new Date());
+      assert.ok(
+        /^\d{4}-\d{2}-\d{2}$/.test(node.dateModified)
+          ? node.dateModified <= today
+          : new Date(node.dateModified) <= new Date(),
+        `No future update date: ${file}`,
+      );
+    }
+  }
+  if (!content.includes('content="noindex, follow"')) {
+    assert.ok(
+      content.includes('AI-generated menu illustration'),
+      `Visible image provenance: ${file}`,
+    );
+  }
+}
+const catalogue = JSON.parse(readFileSync('src/data/menu.json', 'utf8')).filter(
+  (item) => item.visible,
+);
+const menuHtml = readFileSync(path.join(root, 'menu/index.html'), 'utf8');
+const menuSchemas = [
+  ...menuHtml.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g),
+].map((match) => JSON.parse(match[1]));
+const menuSchema = menuSchemas.find((schema) => schema['@type'] === 'Menu');
+const schemaItems = menuSchema.hasMenuSection.flatMap((section) => section.hasMenuItem);
+assert.equal(schemaItems.length, catalogue.length, 'Complete menu graph');
+assert.equal(
+  new Set(schemaItems.map((item) => item['@id'])).size,
+  catalogue.length,
+  'Unique menu entity IDs',
+);
+for (const item of catalogue) {
+  const structured = schemaItems.find((node) => node.name === item.name);
+  assert.equal(
+    structured?.description,
+    item.description,
+    `Schema matches the actual menu: ${item.id}`,
+  );
+  assert.ok(structured?.['@id']?.endsWith(`/menu/${item.id}/#menu-item`));
+  const detail = readFileSync(path.join(root, `menu/${item.id}/index.html`), 'utf8');
+  assert.ok(
+    detail.includes(`"@id":"${structured['@id']}"`),
+    `Same entity on item and menu pages: ${item.id}`,
+  );
+}
+for (const route of ['answers', 'choose', 'content-standards']) {
+  assert.ok(existsSync(path.join(root, route, 'index.html')), `Answer foundation route: ${route}`);
 }
 const manifest = JSON.parse(readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
 if (process.env.PUBLIC_SITE_URL) {

@@ -4,6 +4,12 @@ The exact requested customer address **https://bhuklagla.github.io/** is live an
 
 Website: [Bhuk Lagla](https://bhuklagla.github.io/). Repository: [bhuklagla/bhuklagla.github.io](https://github.com/bhuklagla/bhuklagla.github.io).
 
+## 17 October search and answer foundation
+
+Owner authorised advanced search/answer improvements. Three new public pages provide food/ordering answers, comparisons of the actual 23 dishes and sources/corrections. Three existing evergreen guides were substantially expanded. Menu entities, visible dish descriptions, publisher attribution, genuine edit dates, internal navigation and AI-image provenance are improved. No website prices, private recipes, fabricated experience or credentials were added. Founder story is deferred at the owner's request in `SEARCH_TODO.md`.
+
+`AI_SEARCH.md` explains implementation and official sources. The monthly/manual search-health workflow checks technical availability; GitHub can disable inactive public-repository schedules. Release-specific PR/commit, successful build/deployment, live browser/HTTP checks, Google/Bing status and IndexNow receipt belong in the private workspace handoff `D:/Bhuk Lagla/outputs/2026-10-17-ai-search/SEARCH_RELEASE_HANDOFF.md`. Deployment, indexing, AI eligibility and actual AI citations are separate facts.
+
 ## 16 October brand-name restoration
 
 Owner authorised updating the live website to **Bhuk Lagla**, including the original approved logo without Kitchen. The release updates all public page/content names, shared business/schema name, RSS, enquiry labels and manifest, and uses a new service-worker cache version. Original asset sources and image proportions are preserved; the website logo is a 420×288 WebP derivative of the original approved transparent light-surface logo. `scripts/prepare-assets.mjs` uses the original brand kit so future preparation cannot restore the retired wordmark.

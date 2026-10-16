@@ -2,24 +2,9 @@
 import Layout from '../../layouts/Layout.astro';
 import MenuBrowser from '../../components/MenuBrowser.astro';
 import OrderButton from '../../components/OrderButton.astro';
-import { menu, categories } from '../../lib/menu';
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'Menu',
-  name: 'Bhuk Lagla menu',
-  hasMenuSection: categories.map((category) => ({
-    '@type': 'MenuSection',
-    name: category.name,
-    hasMenuItem: menu
-      .filter((item) => item.category === category.id)
-      .map((item) => ({
-        '@type': 'MenuItem',
-        name: item.name,
-        description: item.description,
-        suitableForDiet: 'https://schema.org/VegetarianDiet',
-      })),
-  })),
-};
+import { menuSchema } from '../../lib/seo';
+import { url } from '../../lib/site';
+const schema = menuSchema();
 ---
 
 <Layout
@@ -32,6 +17,17 @@ const schema = {
     <p class="eyebrow">Find your hunger fix</p>
     <h1>What are you craving?</h1>
     <p>Pure veg. No egg. Pick a dish, then head to Zomato.</p>
+    <p class="small-text">
+      Food images are AI-generated menu illustrations. Actual presentation may vary.
+    </p>
+    <div class="category-links">
+      <a class="button secondary" href={url('choose/')}>
+        Compare toppings and fillings →
+      </a>
+      <a class="text-link" href={url('answers/')}>
+        Food and ordering questions →
+      </a>
+    </div>
   </section>
   <section class="wrap menu-section">
     <MenuBrowser />

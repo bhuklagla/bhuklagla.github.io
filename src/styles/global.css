@@ -1655,3 +1655,90 @@
     }
   }
 }
+
+@layer components {
+  .answer-section,
+  .comparison-section {
+    max-width: 980px;
+    scroll-margin-top: 32px;
+  }
+  .answer-section > h2,
+  .comparison-section > h2 {
+    margin-bottom: 22px;
+  }
+  .answer-card {
+    border-top: 1px solid var(--line);
+    padding-block: 26px;
+    scroll-margin-top: 24px;
+  }
+  .answer-card h3 {
+    font-size: clamp(1.3rem, 3vw, 1.65rem);
+    line-height: 1.25;
+  }
+  .answer-card p {
+    margin-block: 14px;
+    max-width: 76ch;
+  }
+  .comparison-intro {
+    max-width: 76ch;
+    margin-bottom: 24px;
+  }
+  .comparison-table {
+    overflow-x: auto;
+    margin-block: 24px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  .comparison-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+  .comparison-table caption {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    background: var(--surface);
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 16px;
+    vertical-align: top;
+    border-top: 1px solid var(--line);
+    overflow-wrap: anywhere;
+  }
+  .comparison-table th[scope='row'] {
+    width: 42%;
+    font-weight: 550;
+  }
+  .comparison-table a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .comparison-table td {
+    color: var(--muted);
+  }
+  .prose ol {
+    padding-left: 24px;
+    color: var(--muted);
+  }
+  .editorial-note {
+    margin-block: 28px;
+    padding: 20px;
+    border-left: 3px solid var(--orange);
+    background: var(--surface);
+    font-size: 0.9rem;
+  }
+  .editorial-note p {
+    margin: 0;
+  }
+  .image-disclosure {
+    padding-block: 18px;
+    font-size: 0.78rem;
+  }
+  .prose .article-meta {
+    display: block;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+}
