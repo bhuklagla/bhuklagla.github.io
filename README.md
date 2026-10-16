@@ -1,4 +1,4 @@
-# Bhuk Lagla Kitchen
+# Bhuk Lagla
 
 Kitchen Studio website for Sundargarh: approved mascot/logo, 23 real dishes, search and categories, dish pages, local blog, party enquiries and optional anonymous journey notifications. Orders go to Zomato. No website prices, recipes or direct checkout.
 

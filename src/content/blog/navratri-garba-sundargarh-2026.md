@@ -16,7 +16,7 @@ Shardiya Navratri begins on **11 October 2026**, with Dussehra on **20 October 2
 
 We have not verified a 2026 Garba programme in Sundargarh town as of **9 October 2026**. Before making plans, look for an organiser's original announcement with the exact venue, date, entry rules and a current contact. Confirm whether your ticket includes food and whether outside food is allowed.
 
-One regional example explains why location matters: [Rourkela Junction Events](https://rourkelajunction.com/policies/terms) lists Dhinchak Dandiya on **17 and 18 October 2026 at Plutone Mall, Rourkela**. That is a Rourkela event, not a Sundargarh-town event. Bhuk Lagla Kitchen is not its organiser, caterer or ticket seller, and we are not claiming delivery to that venue. Recheck the organiser's announcement before travelling.
+One regional example explains why location matters: [Rourkela Junction Events](https://rourkelajunction.com/policies/terms) lists Dhinchak Dandiya on **17 and 18 October 2026 at Plutone Mall, Rourkela**. That is a Rourkela event, not a Sundargarh-town event. Bhuk Lagla is not its organiser, caterer or ticket seller, and we are not claiming delivery to that venue. Recheck the organiser's announcement before travelling.
 
 ## A snack break before your evening
 

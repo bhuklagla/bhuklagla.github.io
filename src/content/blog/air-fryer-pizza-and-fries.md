@@ -1,12 +1,12 @@
 ---
 title: A crisp air-fryer finish.
-description: Learn which Bhuk Lagla Kitchen dishes use an air fryer, and why our pizza and fries are described differently from grilled sandwiches.
+description: Learn which Bhuk Lagla dishes use an air fryer, and why our pizza and fries are described differently from grilled sandwiches.
 date: 2026-10-09
 image: peri-peri-fries
 topic: Our food
 ---
 
-Our menu uses different cooking methods for different dishes. Pizza and fries at Bhuk Lagla Kitchen are cooked in an air fryer; sandwiches are grilled. Knowing that difference makes the menu easier to understand.
+Our menu uses different cooking methods for different dishes. Pizza and fries at Bhuk Lagla are cooked in an air fryer; sandwiches are grilled. Knowing that difference makes the menu easier to understand.
 
 ## Pizza from the air fryer
 

@@ -12,7 +12,7 @@ On 9 October 2026 Milan selected Kitchen Studio and explicitly instructed "Build
 
 Confirmed purpose: customers browse the menu and order on Zomato. Milan subsequently requested Web3Forms general/party enquiries, ntfy journey notifications and a private owner report; these integrations are authorised. Do not add a cart, direct checkout, WhatsApp ordering, payments or fabricated Zomato order alerts.
 
-Use the spelling **Bhuk Lagla**, with the customer-facing title **Bhuk Lagla Kitchen**. Keep its customer identity separate from The Oven Vibe. The Oven Vibe repository is a reference for development practices, not a source of Bhuk Lagla business facts, prices, photos, phone numbers, domains, or reviews.
+Use the spelling **Bhuk Lagla**, with the customer-facing title **Bhuk Lagla**. Keep its customer identity separate from The Oven Vibe. The Oven Vibe repository is a reference for development practices, not a source of Bhuk Lagla business facts, prices, photos, phone numbers, domains, or reviews.
 
 Use `skills/*/SKILL.md` for Bhuk Lagla workflows. Claude skills under `.claude/skills/` can also be read and used by Codex. Their relative resources resolve from their own skill folders; see `skills/README.md` for commands from the repository root. Original guides in `skills/references/oven-vibe/` describe another application and are reference material only; their commands, branch policies, numeric examples, and approval rules do not apply here.
 

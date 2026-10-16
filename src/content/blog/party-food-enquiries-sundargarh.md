@@ -1,12 +1,12 @@
 ---
 title: Planning food for a Sundargarh gathering
-description: What to include in a birthday, anniversary or group food enquiry to Bhuk Lagla Kitchen in Sundargarh.
+description: What to include in a birthday, anniversary or group food enquiry to Bhuk Lagla in Sundargarh.
 date: 2026-10-09
 image: corn-cream-grilled-sandwich
 topic: Local gatherings
 ---
 
-A birthday, an anniversary or a college get-together starts with a little planning. If you want to ask Bhuk Lagla Kitchen about food for a gathering in Sundargarh, our [party enquiry form](../../contact/?type=party) is a place to begin.
+A birthday, an anniversary or a college get-together starts with a little planning. If you want to ask Bhuk Lagla about food for a gathering in Sundargarh, our [party enquiry form](../../contact/?type=party) is a place to begin.
 
 ## Tell us the occasion
 

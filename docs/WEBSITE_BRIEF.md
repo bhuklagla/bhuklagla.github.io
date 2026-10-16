@@ -1,4 +1,6 @@
-# Current decisions — 9 October 2026
+# Current decisions
+
+16 October 2026: Milan restored the customer-facing name **Bhuk Lagla** and approved updating the live website. Remove the former Kitchen suffix from customer copy, metadata, structured data, RSS, enquiry labels and the PWA name. Restore the original approved mascot-and-name logo without Kitchen; preserve full-resolution originals. The root host and all existing business facts remain unchanged. This supersedes the historical naming decisions below.
 
 10 October verified release: https://bhuklagla.github.io/ is live on the free bhuklagla organization, transferred with history intact. Root Pages deployment 37987961616 and main checks 37987962046 succeeded; all 42 canonical pages, 23 sitemap images, six RSS entries, root PWA assets and anonymous contact-intent delivery were checked live. This supersedes historical personal-host/signup/backend-pending notes below. See docs/RELEASE.md (RELEASE.md from this folder) and NOTIFICATIONS_SETUP.md for actual evidence and remaining follow-ups.
 
@@ -16,7 +18,7 @@ Contact has Phone required and Party / bulk order enquiry first and selected by 
 
 ---
 
-# Website discussion — Bhuk Lagla Kitchen
+# Website discussion — Bhuk Lagla
 
 Updated: 9 October 2026. Status: visual demo review; this is not the final PRD or approval to build the full website.
 
@@ -51,7 +53,7 @@ Existing brand references are in `D:\Bhuk Lagla\Bhuk_Lagla_Brand_Handoff_Kit` an
 
 ## Still to discuss
 
-- Website languages, local expressions and exact public USP wording. Customer-facing name is Bhuk Lagla Kitchen.
+- Website languages, local expressions and exact public USP wording. Customer-facing name is Bhuk Lagla.
 - Visual personality and use of the existing logo/brand palette.
 - Homepage and menu structure: one browsable page or separate pages.
 - Final web image treatment; all 23 named food photos exist in `D:\Bhuk Lagla\Zomato\Menu Images 1800x1200`.
