@@ -6,7 +6,7 @@ import DishCard from '../../components/DishCard.astro';
 import Icon from '../../components/Icon.astro';
 import { menu, categories, relatedItems } from '../../lib/menu';
 import { url } from '../../lib/site';
-import { absolute } from '../../lib/seo';
+import { absolute, menuItemId } from '../../lib/seo';
 export function getStaticPaths() {
   return menu.map((item) => ({ params: { id: item.id }, props: { item } }));
 }
@@ -16,11 +16,13 @@ const related = relatedItems(item);
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'MenuItem',
+  '@id': menuItemId(item.id),
   name: item.name,
   description: item.description,
   suitableForDiet: 'https://schema.org/VegetarianDiet',
   image: absolute(`images/menu/${item.id}-960.webp`),
   url: absolute(`menu/${item.id}/`),
+  mainEntityOfPage: { '@id': `${absolute(`menu/${item.id}/`)}#webpage` },
 };
 ---
 
@@ -56,8 +58,12 @@ const schema = {
       </p>
       <OrderButton label="Find it on Zomato" />
       <p class="small-text">
-        Delivery and eligible offers are shown by Zomato. Photos show the dish; presentation may
-        vary.
+        Delivery and eligible offers are shown by Zomato. This food image is an AI-generated menu
+        illustration; actual presentation and portions may vary.
+      </p>
+      <p class="small-text">
+        <a href={url(`choose/#${category.id}`)}>Compare {category.name.toLowerCase()}</a> ·{' '}
+        <a href={url('answers/#allergies')}>Ingredient questions</a>
       </p>
       <button type="button" class="text-link" data-share>
         <Icon name="share" />

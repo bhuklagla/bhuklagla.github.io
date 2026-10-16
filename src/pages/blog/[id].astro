@@ -19,9 +19,13 @@ const schema = {
   headline: article.data.title,
   description: article.data.description,
   datePublished: article.data.date.toISOString(),
-  author: { '@type': 'Organization', name: 'Bhuk Lagla' },
+  ...(article.data.updated
+    ? { dateModified: article.data.updated.toISOString().slice(0, 10) }
+    : {}),
+  author: { '@id': restaurantId(), name: 'Bhuk Lagla', url: absolute('about/') },
   publisher: {
     '@type': 'Organization',
+    '@id': restaurantId(),
     name: 'Bhuk Lagla',
     logo: { '@type': 'ImageObject', url: absolute('brand/logo.webp') },
   },
@@ -40,6 +44,7 @@ const schema = {
   schema={schema}
   active="blog"
   articleDate={article.data.date.toISOString()}
+  articleModified={article.data.updated?.toISOString().slice(0, 10)}
 >
   <article class="wrap prose section">
     <a href={url('blog/')} class="text-link">
@@ -48,16 +53,39 @@ const schema = {
     <p class="eyebrow">{article.data.topic}</p>
     <h1>{article.data.title}</h1>
     <p class="article-meta">
-      Bhuk Lagla ·{' '}
+      Published by <a href={url('about/')}>Bhuk Lagla</a> ·{' '}
       <time datetime={article.data.date.toISOString()}>{displayDate(article.data.date)}</time>
+      {article.data.updated && (
+        <span>
+          {' '}
+          · Updated{' '}
+          <time datetime={article.data.updated.toISOString().slice(0, 10)}>
+            {displayDate(article.data.updated)}
+          </time>
+        </span>
+      )}
     </p>
+    {article.id.includes('2026') && (
+      <p class="editorial-note">
+        This is a dated 2026 planning guide. Confirm event details with the linked organiser before
+        making plans.
+      </p>
+    )}
     <FoodImage
       id={article.data.image}
       alt={findItem(article.data.image).name}
       eager
       class="article-hero"
     />
+    <p class="small-text">AI-generated menu illustration. Actual presentation may vary.</p>
     <Content />
+    <aside class="editorial-note" aria-label="About this guide">
+      <p>
+        Published by Bhuk Lagla using menu records and confirmed kitchen information, with
+        AI-assisted drafting.{' '}
+        <a href={url('content-standards/')}>Sources, images and corrections</a>.
+      </p>
+    </aside>
     <a href={url('menu/')} class="button">
       Find your craving →
     </a>

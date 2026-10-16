@@ -110,6 +110,8 @@ fs.writeFileSync(
     {
       originalsPreserved: true,
       photoCollection: 'Menu Images v2 - Natural Serving Angle',
+      foodImageProvenance:
+        'AI-generated menu illustrations, not camera photographs of individual orders. See outputs/2026-10-07-menu-images-v2/QA-notes.md in the private workspace.',
       brand: {
         name: 'Bhuk Lagla',
         logo: {

@@ -19,6 +19,7 @@ const { item } = Astro.props as { item: MenuItem };
     <h2>
       <a href={url(`menu/${item.id}/`)}>{item.name}</a>
     </h2>
+    <p class="dish-summary">{item.description}</p>
     <p class="veg-label">
       <Icon name="leaf" size={16} />
       Pure veg · no egg

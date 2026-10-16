@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { categories, findItem, menu } from '../lib/menu';
+import { guidance } from '../data/menu-guidance';
+import { url } from '../lib/site';
+---
+
+<Layout
+  title="Compare Pizza, Sandwiches, Maggi & Pasta | Bhuk Lagla Menu Guide"
+  description="Compare Bhuk Lagla's actual toppings, fillings, sauces and seasonings. Choose among the vegetarian pizza, sandwiches, Maggi, pasta and fries in Sundargarh."
+>
+  <section class="wrap page-heading">
+    <p class="eyebrow">Follow your craving</p>
+    <h1>
+      What makes
+      <br />
+      each bite different?
+    </h1>
+    <p>A side-by-side guide to our menu’s toppings, fillings and sauces.</p>
+    <p class="small-text">
+      Published by Bhuk Lagla · Updated <time datetime="2026-10-17">17 October 2026</time>
+    </p>
+    <nav class="category-links" aria-label="Compare menu categories">
+      {categories.map((category) => (
+        <a class="button secondary" href={`#${category.id}`}>
+          {category.name}
+        </a>
+      ))}
+    </nav>
+  </section>
+  <section class="wrap prose section">
+    <h2>Choose in three steps</h2>
+    <ol>
+      <li>Pick the format: pizza, a grilled sandwich, a bowl of Maggi or pasta, or fries.</li>
+      <li>Compare the listed ingredients below. Look for the topping or sauce you enjoy.</li>
+      <li>
+        Open the dish description, then confirm portion choices, availability and your total on
+        Zomato.
+      </li>
+    </ol>
+    <p>
+      This guide compares our {menu.length} named dishes in {categories.length} website categories.
+      Counts come from this website’s catalogue, not sales data. Taste notes summarise the public
+      descriptions; they are not taste-test scores, popularity rankings or complete allergen lists.
+    </p>
+  </section>
+  {categories.map((category) => (
+    <section class="wrap comparison-section section" id={category.id}>
+      <p class="eyebrow">
+        {guidance[category.id].picks.length} dishes · {category.name}
+      </p>
+      <h2>{guidance[category.id].question}</h2>
+      <p class="comparison-intro">{guidance[category.id].answer}</p>
+      <div
+        class="comparison-table"
+        role="region"
+        aria-label={`${category.name} ingredient comparison`}
+        tabindex="0"
+      >
+        <table>
+          <caption>{category.name}: differences in the listed ingredients</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dish</th>
+              <th scope="col">What makes it different</th>
+            </tr>
+          </thead>
+          <tbody>
+            {guidance[category.id].picks.map(([id, note]) => (
+              <tr>
+                <th scope="row">
+                  <a href={url(`menu/${id}/`)}>{findItem(id).name}</a>
+                </th>
+                <td>{note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <a class="text-link" href={url(`menu/category/${category.id}/`)}>
+        Browse {category.name.toLowerCase()} images and dishes →
+      </a>
+    </section>
+  ))}
+  <section class="wrap prose section">
+    <h2>Two ways to use this guide</h2>
+    <p>
+      <strong>If you want corn but are choosing a sauce:</strong> compare Corn Masti Pizza’s pizza
+      sauce with Schezwan Corn Pizza’s spicy Schezwan sauce and red paprika. Corn Olive Pizza adds
+      black olive instead. Open each description before choosing.
+    </p>
+    <p>
+      <strong>If you are planning food for an office gathering:</strong> shortlist the formats and
+      fillings people want, then <a href={url('contact/?type=party')}>send a party enquiry</a> with
+      the date and guest count. These are example decisions, not reports of completed customer
+      events.
+    </p>
+    <p>
+      Dietary restriction? <a href={url('answers/#allergies')}>Read the ingredient guidance</a> and
+      ask the kitchen before ordering. For more about how we prepare this information, see{' '}
+      <a href={url('content-standards/')}>sources and corrections</a>.
+    </p>
+  </section>
+</Layout>

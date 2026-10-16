@@ -2,6 +2,7 @@
 title: A crisp air-fryer finish.
 description: Learn which Bhuk Lagla dishes use an air fryer, and why our pizza and fries are described differently from grilled sandwiches.
 date: 2026-10-09
+updated: 2026-10-17
 image: peri-peri-fries
 topic: Our food
 ---
@@ -10,7 +11,7 @@ Our menu uses different cooking methods for different dishes. Pizza and fries at
 
 ## Pizza from the air fryer
 
-Our [pizzas](../../menu/category/pizza/) use an air-fryer finish. Pick a topping that matches your craving, then open the dish page for the public description and photograph.
+Our [pizzas](../../menu/category/pizza/) use an air-fryer finish. Pick a topping that matches your craving, then open the dish page for its public description and menu illustration.
 
 ## Fries for a snack break
 
@@ -23,3 +24,13 @@ Our [fries](../../menu/category/snacks/) are air-fryer cooked with a light oil d
 ## Choose what works for you
 
 All menu dishes are pure veg and egg-free. If you have a food allergy or a dietary restriction, [contact the kitchen](../../contact/) before making arrangements. Vegetarian or egg-free does not mean free from other allergens, and shared preparation equipment may matter to you.
+
+## Does air-fryer cooked mean oil-free or healthier?
+
+Our description of the fries says they use a light oil drizzle. It therefore does not mean oil-free. We do not publish a measured calorie, fat or nutrient comparison with another cooking method. Cooking method alone is not enough to establish that one meal meets your dietary needs.
+
+## What can I compare before ordering?
+
+Compare the actual dish ingredients and seasonings: Classic Salted Fries are finished with salt, while Peri Peri Fries use peri peri seasoning. For pizzas, compare toppings and sauces. The [menu comparison guide](../../choose/) brings these differences together. It does not provide preparation instructions or measured taste-test results.
+
+The images are AI-generated menu illustrations, rather than photographs documenting a cooking trial. Our [sources and image information](../../content-standards/) explain their role. Check the current written listing on Zomato before placing an order.
