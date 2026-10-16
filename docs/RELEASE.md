@@ -4,6 +4,10 @@ The exact requested customer address **https://bhuklagla.github.io/** is live an
 
 Website: [Bhuk Lagla](https://bhuklagla.github.io/). Repository: [bhuklagla/bhuklagla.github.io](https://github.com/bhuklagla/bhuklagla.github.io).
 
+## 17 October Umami follow-up
+
+Owner subsequently requested Umami traffic monitoring through the explicitly designated WhatsApp chat, completed account verification and chose Europe/free. The integration retains the optional measurement choice, renews the consent preference for the added provider, excludes form/search/query data and private report routes, and records only pageviews plus three anonymous action names. See `UMAMI.md` for configuration, owner access, retention and verification scope. Exact CI/deploy and live receipt evidence belongs in the workspace handoff below.
+
 ## 17 October search and answer foundation
 
 Owner authorised advanced search/answer improvements. Three new public pages provide food/ordering answers, comparisons of the actual 23 dishes and sources/corrections. Three existing evergreen guides were substantially expanded. Menu entities, visible dish descriptions, publisher attribution, genuine edit dates, internal navigation and AI-image provenance are improved. No website prices, private recipes, fabricated experience or credentials were added. Founder story is deferred at the owner's request in `SEARCH_TODO.md`.

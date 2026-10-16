@@ -1,5 +1,7 @@
 # Current decisions
 
+17 October 2026 follow-up: via the expressly authorised The Oven Vibe WhatsApp chat, Milan requested Umami using `bhuklagla@outlook.com`, completed password/email verification himself, selected Europe and instructed use of the free plan. Add consent-based traffic and anonymous action measurement to the correct site and preserve the existing enquiry/journey privacy boundaries. See `UMAMI.md`. No paid upgrade or public dashboard sharing is authorised.
+
 17 October 2026: Milan authorised advanced search/answer optimisation and implementation for Bhuk Lagla. Add useful customer answers, actual-menu comparisons, truthful authorship/provenance and sustainable technical checks. Existing no-price/no-recipe, root-host, identity and Zomato-ordering boundaries remain. He explicitly deferred the founder story because he has none to provide yet; keep it in `SEARCH_TODO.md` for later. Do not invent first-hand stories, testimonials, interviews, research or credentials. See `AI_SEARCH.md` for scope, sources and measurement limits.
 
 16 October 2026: Milan restored the customer-facing name **Bhuk Lagla** and approved updating the live website. Remove the former Kitchen suffix from customer copy, metadata, structured data, RSS, enquiry labels and the PWA name. Restore the original approved mascot-and-name logo without Kitchen; preserve full-resolution originals. The root host and all existing business facts remain unchanged. This supersedes the historical naming decisions below.
